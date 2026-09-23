@@ -1,0 +1,50 @@
+name: Mod Request
+description: Suggest a new mod for Cozy Progression
+title: "[Mod Request]: "
+labels: ["mod-request"]
+body:
+  - type: input
+    id: mod-name
+    attributes:
+      label: Mod Name
+      placeholder: e.g. Another Furniture
+    validations:
+      required: true
+
+  - type: input
+    id: mod-link
+    attributes:
+      label: Mod Link (Modrinth or CurseForge)
+      placeholder: https://modrinth.com/mod/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why should this mod be added?
+      description: How does it fit the cozy + progression theme?
+      placeholder: It adds more furniture options that match Macaw's style...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Building / Decoration
+        - Food / Farming
+        - Utility / QoL
+        - Adventure / Structures
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: compatibility
+    attributes:
+      label: Compatibility
+      options:
+        - label: I checked that this mod is available for the current Minecraft version
+          required: true
