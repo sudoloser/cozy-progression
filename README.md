@@ -1,6 +1,16 @@
 # Cozy Progression
 Progression-based modpack with a hint of coziness while still keeping the minecraft feel!
 
+<details>
+<summary>Screenshots (custom title screen)</summary>
+
+<p>
+  <img src="screenshots/title_screen_forest.png" width="400" alt="Custom title screen - forest" />
+  <img src="screenshots/title_screen_winter.gif" width="400" alt="Custom title screen - winter" />
+</p>
+
+</details>
+
 ### Version & Loader
 - Minecraft: 26.2
 - Fabric
