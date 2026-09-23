@@ -14,7 +14,7 @@ body:
   - type: input
     id: mod-link
     attributes:
-      label: Mod Link (Modrinth or CurseForge)
+      label: Mod Link (Modrinth)
       placeholder: https://modrinth.com/mod/...
     validations:
       required: true
