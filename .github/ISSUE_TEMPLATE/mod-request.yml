@@ -46,5 +46,5 @@ body:
     attributes:
       label: Compatibility
       options:
-        - label: I checked that this mod is available for the current Minecraft version
+        - label: I checked that this mod is available for version 26.2
           required: true
