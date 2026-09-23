@@ -9,12 +9,6 @@ body:
       label: Describe the bug
     validations:
       required: true
-  - type: input
-    id: version
-    attributes:
-      label: Minecraft + Loader version
-    validations:
-      required: true
   - type: textarea
     id: steps
     attributes:
