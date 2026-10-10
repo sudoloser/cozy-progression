@@ -27,8 +27,8 @@ class CozyProgression(bridge.Bot):
     # Define intents
     intents = discord.Intents.all()
 
-# Define bot client with prefix and intents
-client = CozyProgression(intents=CozyProgression.intents, command_prefix="!")
+# Define bot client with prefix, intents, and RPC
+client = CozyProgression(intents=CozyProgression.intents, command_prefix="!", activity=discord.Game(name="!commands"))
 
 # Listen for all events
 @client.listen()
