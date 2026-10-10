@@ -32,7 +32,7 @@ class Utils(commands.Cog):
             await ctx.respond(f"Failed to get latest changelog from `{latest}`.\nGithub may be down\nError: `{e}`")
     # ---------------------- MOD COMMAND  ---------------------------
     async def mod(self, ctx, mod: str = "", ):
-        base_url = ""
+        base_url = "https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/modlist.txt"
 
         response = requests.get(base_url)
         modlist = response.text
