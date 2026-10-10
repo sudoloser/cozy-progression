@@ -36,6 +36,62 @@ class Utils(commands.Cog):
     async def nick(self, ctx, member:discord.Member, *, nick:str):
         await member.edit(nick=nick)
         await ctx.respond(f"Changed {member.mention}'s nickname to {nick}")
+    # ---------------------- ROLE COMMAND ---------------------------
+    @bridge.bridge_command(description="Add or remove a role from a user")
+    @bridge.has_permissions(manage_roles=True)
+    async def role(self, ctx, member:discord.Member, role:discord.Role):
+        success = discord.Embed(title="Success", description=f"Added role `{role}` to {member.mention}.", color=discord.Color.green())
+        success2 = discord.Embed(title="Success", description=f"Removed role `{role}` from {member.mention}.", color=discord.Color.green())
+        
+        if member==None or role==None:
+            return await ctx.respond("Please specify the targeted user and role.")
+        try:
+            if role in member.roles:
+                await member.remove_roles(role)
+                await ctx.respond(embed=success2)
+            else:
+                await member.add_roles(role)
+                await ctx.respond(embed=success)
+
+        except Exception as e:
+            failure = discord.Embed(title="failure", description=f"Failure to add role `{role}` to {member.mention} with the following error:\n`{e}`", color=discord.Color.red())
+            return await ctx.respond(embed=failure)
+    # ---------------------- BANNER COMMAND -------------------------
+    @bridge.bridge_command(description="Shows a user's banner")
+    async def banner(self, ctx, member: discord.Member = None):
+        member = member or ctx.author
+
+        user = await self.bot.fetch_user(member.id)
+
+        if user.banner:
+            embed = discord.Embed (
+                title="Banner",
+                description=f"{member.mention}'s Banner"
+            )
+            embed.set_image (
+                url=user.banner
+            )
+            await ctx.respond(embed=embed)
+        else:
+            await ctx.respond("You either:\n- Used the command on its own\nor\n- The user does not have an banner set")
+    # ---------------------- AVATAR COMMAND -------------------------
+    @bridge.bridge_command(description="Shows a user's avatar")
+    async def avatar(self, ctx, member: discord.Member = None):
+        member = member or ctx.author
+        
+        user = await self.bot.fetch_user(member.id)
+
+        if user.avatar:
+            embed = discord.Embed (
+                title="Avatar",
+                description=f"{member.mention}'s Avatar"
+            )
+            embed.set_image (
+                url=user.avatar
+            )
+            await ctx.respond(embed=embed)
+        else:
+            await ctx.respond("You either:\n- Used the command on its own\nor\n- The user does not have an avatar set")
 # Setup cog
 def setup(bot): 
     # Add cog to the bot
