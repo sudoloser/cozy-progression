@@ -31,7 +31,8 @@ class Utils(commands.Cog):
         except Exception as e:
             await ctx.respond(f"Failed to get latest changelog from `{latest}`.\nGithub may be down\nError: `{e}`")
     # ---------------------- MOD COMMAND  ---------------------------
-    async def mod(self, ctx, mod: str = "", ):
+    @bridge.bridge_command(description="Check if a mod is in the modlist")
+    async def mod(self, ctx, *, mod: str = "", ):
         base_url = "https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/modlist.txt"
 
         response = requests.get(base_url)
