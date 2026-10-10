@@ -153,6 +153,8 @@ class Moderation(commands.Cog):
         await ctx.respond("Purging messages...")
         # Add 2 to compensate for the command message, and bot message
         await ctx.channel.purge(limit=amount+2)
+        message = await ctx.send(f"Purged {amount} messages.\n-# Deleting in 2 seconds")
+        ctx.delete(message.id)
 # Setup cog
 def setup(bot): 
     # Add cog to the bot
