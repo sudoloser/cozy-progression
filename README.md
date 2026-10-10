@@ -18,4 +18,4 @@ python3 main.py
 ```
 
 > ![NOTE]
-> The changelog command defaults to my github url. you can change that by replacing the value of `"base_url"` in `./src/cogs/utils.py`.
+> The changelog command defaults to my github URL. you can change that by replacing the value of `"base_url"` in `./src/cogs/utils.py`.
