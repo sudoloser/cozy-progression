@@ -34,50 +34,57 @@ class Utils(commands.Cog):
     @bridge.bridge_command(description="Check if a mod is in the modlist")
     async def mod(self, ctx, *, mod: str = ""):
         mod = mod.strip()
-        if not mod:
-            await ctx.respond("Please provide a mod name to search for.")
-            return
-
+        modlistlink = "https://github.com/sudoloser/cozy-progression/blob/main/modlist.md"
         base_url = "https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/modlist.txt"
 
-        # Fetch modlist asynchronously
-        async with aiohttp.ClientSession() as session:
-            async with session.get(base_url) as response:
-                text = await response.text()
-
-        modlist = text.splitlines()
-        mod_lower = mod.lower()
-
-        # Filter matching lines
-        content = [line for line in modlist if mod_lower in line.lower()]
-
-        if content:
-            description_lines = []
-            char_count = 0
-            max_chars = 3800 
-
-            for line in content:
-                formatted_line = f"- {line}\n"
-                if char_count + len(formatted_line) > max_chars:
-                    remaining = len(content) - len(description_lines)
-                    description_lines.append(f"\n*...and {remaining} more matches.*")
-                    break
-                description_lines.append(formatted_line)
-                char_count += len(formatted_line)
-
-            embed = discord.Embed(
-                title=f"Matched Mods ({len(content)} found):",
-                description="".join(description_lines),
-                color=discord.Color.blue()
-            )
-            await ctx.respond(embed=embed)
+        if not mod:
+            await ctx.respond("Please provide a mod name to search for, or use `!mod list` to get a link for the list.")
+            return
+        elif mod == "list":
+            await ctx.respond(f"Click [here]({modlistlink}) for the full modlist.")
         else:
-            embed = discord.Embed(
-                title="Matched Mods:",
-                description=f"Could not find any mods matching `{mod}`.",
-                color=discord.Color.red()
-            )
-            await ctx.respond(embed=embed)
+            # Fetch modlist asynchronously
+            async with aiohttp.ClientSession() as session:
+                async with session.get(base_url) as response:
+                    text = await response.text()
+
+            modlist = text.splitlines()
+            mod_lower = mod.lower()
+
+            # Filter matching lines
+            content = [line for line in modlist if mod_lower in line.lower()]
+
+            if content:
+                description_lines = []
+                char_count = 0
+                max_chars = 3800 
+
+                for line in content:
+                    formatted_line = f"- {line}\n"
+                    if char_count + len(formatted_line) > max_chars:
+                        remaining = len(content) - len(description_lines)
+                        description_lines.append(f"\n*...and {remaining} more matches.*")
+                        break
+                    description_lines.append(formatted_line)
+                    char_count += len(formatted_line)
+
+                embed = discord.Embed(
+                    title=f"Matched Mods ({len(content)} found):",
+                    description="".join(description_lines),
+                    color=discord.Color.blue()
+                )
+                embed.add_field (
+                    name="Modlist",
+                    value=f"Click [here]({modlistlink}) for the full modlist."
+                )
+                await ctx.respond(embed=embed)
+            else:
+                embed = discord.Embed(
+                    title="Matched Mods:",
+                    description=f"Could not find any mods matching `{mod}`.",
+                    color=discord.Color.red()
+                )
+                await ctx.respond(embed=embed)
                            
     # ---------------------- NICK COMMAND ---------------------------
     @bridge.bridge_command(description="Change a user's nickname")
