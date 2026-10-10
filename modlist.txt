@@ -1,0 +1,105 @@
+3d-Skin-Layers
+A Good Place
+AFK Cinematics
+Accelerated Decay
+AmbientSounds
+Animatica Refabricated
+AppleSkin
+Architectury
+Backpacks!
+Balm
+Bartering Station
+Better Mount HUD
+BetterGrassify
+Blur+
+CICADA
+Cape Provider
+Cloth Config v26.2
+Collective
+Comforts
+Continuity
+Controlify
+CraftPresence
+Crash Assistant
+CreativeCore
+Cristel Lib
+Cubes Without Borders
+Debugify
+Default Options
+Do a Barrel Roll
+Dungeons and Taverns
+Dynamic FPS
+Enchanted Vertical Slabs
+EnchantmentDescriptions
+Enhanced Biomes Music
+Entity Model Features
+Entity Texture Features
+Fabric API
+Fabric Language Kotlin
+Falling Leaves
+Fancy World Animations
+FancyMenu
+FancyToasts
+Farmer's Delight
+FastQuit
+FerriteCore
+FirstPerson
+Forge Config API Port
+FrozenLib
+Fzzy Config
+Horseman
+ImmediatelyFast
+Immersive Armors
+Immersive Melodies
+Iris
+Ixeris
+Konkrete
+LambDynamicLights
+Lithium
+Lithostitched
+Macaw's Bridges
+Macaw's Doors
+Macaw's Fences and Walls
+Macaw's Furniture
+Macaw's Paths and Pavings
+Macaw's Stairs and Balconies
+Macaw's Windows
+Melody
+Mod Menu
+More Culling
+Mouse Tweaks
+OptiGUI
+Placeholder API
+Player Animation Library
+Polymer
+Presence Footsteps
+PrickleMC
+Puzzle
+Puzzles Lib
+Realistic Bees
+Reese's Sodium Options
+Remove Reloading Screen
+Resourcify
+Roughly Enough Items
+Rustic Delight
+Simple Copper Pipes
+Sit
+Skyboxify
+Sodium
+Sodium Extra
+Sodium Shadowy Path Blocks
+SuperMartijn642's Config Library
+SuperMartijn642's Core Lib
+Tectonic
+Terralith
+Tooltip Tweaks
+Towns and Towers
+UniLib
+Universal Graves
+Vanilla Progression
+Visuality
+WaveyCapes
+Xaero's Minimap
+Xaero's World Map
+YetAnotherConfigLib
+Zoomify
