@@ -9,7 +9,7 @@ class General(commands.Cog):
     # ------------ HELP COMMAND ------------
     @bridge.bridge_command(description="List of commands")
     async def commands(self, ctx):
-        response = "# List of commands:\n\n## Moderation:\n\n- **!kick**\n- **!ban**\n- **!purge**\n\n## Utility:\n\n- **!changelog**"
+        response = "# List of commands:\n\n## Moderation:\n\n- **!kick**\n- **!ban**\n- **!purge**\n## Utility:\n\n- **!changelog**\n- **!nick**"
 
         await ctx.respond(response)
 

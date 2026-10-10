@@ -30,6 +30,12 @@ class Utils(commands.Cog):
             await ctx.respond(content)
         except Exception as e:
             await ctx.respond(f"Failed to get latest changelog from `{latest}`.\nGithub may be down\nError: `{e}`")
+    # ---------------------- NICK COMMAND ---------------------------
+    @bridge.bridge_command(description="Change a user's nickname")
+    @bridge.has_permissions(manage_nicknames=True)
+    async def nick(self, ctx, member:discord.Member, *, nick:str):
+        await member.edit(nick=nick)
+        await ctx.respond(f"Changed {member.mention}'s nickname to {nick}")
 # Setup cog
 def setup(bot): 
     # Add cog to the bot
