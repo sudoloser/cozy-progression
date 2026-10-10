@@ -30,6 +30,23 @@ class Utils(commands.Cog):
             await ctx.respond(content)
         except Exception as e:
             await ctx.respond(f"Failed to get latest changelog from `{latest}`.\nGithub may be down\nError: `{e}`")
+    # ---------------------- MOD COMMAND  ---------------------------
+    async def mod(self, ctx, mod: str = "", ):
+        base_url = ""
+
+        response = requests.get(base_url)
+        modlist = response.text
+
+        mod_lower = mod.lower
+
+        content = [line for line in modlist if mod_lower in line.lower()]
+
+        if content:
+            embed = discord.Embed(title="Matched Mods:", description=f"\n".join(f"- {line}" for line in content), color=discord.Color.blue)
+            await ctx.respond(embed=embed)
+        else:
+            embed = discord.Embed(title="Matched Mods:", description=f"Could not find any mods matching {mod}")
+                           
     # ---------------------- NICK COMMAND ---------------------------
     @bridge.bridge_command(description="Change a user's nickname")
     @bridge.has_permissions(manage_nicknames=True)
