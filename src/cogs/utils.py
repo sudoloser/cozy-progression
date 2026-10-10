@@ -1,6 +1,7 @@
 import discord
 import os
-import requests
+import aiohttp
+import math
 
 from discord.ext import bridge, commands
 
@@ -16,37 +17,68 @@ class Utils(commands.Cog):
         base_url = "https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/CHANGELOG/latest.md"
 
         try:
-            # Fetch the latest changelog URL
-            response = requests.get(base_url)
-
-            # Asign that to a variable
-            latest = response.text
+            # Async a new aiohttp session
+            async with aiohttp.ClientSession() as session:
+                # Async a fetch request and return the response to the latest variable
+                async with aiohttp.get(base_url) as response:
+                    latest = await response.text()
             
             # Get the latest changelog
-            response = requests.get(latest)
-
-            content = response.text
+            async with aiohttp.ClientSession() as session:
+                async with aiohttp.get(latest) as response:
+                    content = await response.text()
 
             await ctx.respond(content)
         except Exception as e:
             await ctx.respond(f"Failed to get latest changelog from `{latest}`.\nGithub may be down\nError: `{e}`")
     # ---------------------- MOD COMMAND  ---------------------------
     @bridge.bridge_command(description="Check if a mod is in the modlist")
-    async def mod(self, ctx, *, mod: str = "", ):
+    async def mod(self, ctx, *, mod: str = ""):
+        mod = mod.strip()
+        if not mod:
+            await ctx.respond("Please provide a mod name to search for.")
+            return
+
         base_url = "https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/modlist.txt"
 
-        response = requests.get(base_url)
-        modlist = response.text
+        # Fetch modlist asynchronously
+        async with aiohttp.ClientSession() as session:
+            async with session.get(base_url) as response:
+                text = await response.text()
 
-        mod_lower = mod.lower
+        modlist = text.splitlines()
+        mod_lower = mod.lower()
 
+        # Filter matching lines
         content = [line for line in modlist if mod_lower in line.lower()]
 
         if content:
-            embed = discord.Embed(title="Matched Mods:", description=f"\n".join(f"- {line}" for line in content), color=discord.Color.blue)
+            description_lines = []
+            char_count = 0
+            max_chars = 3800  # Safe buffer under Discord's 4096 character limit per embed
+
+            for line in content:
+                formatted_line = f"- {line}\n"
+                if char_count + len(formatted_line) > max_chars:
+                    remaining = len(content) - len(description_lines)
+                    description_lines.append(f"\n*...and {remaining} more matches.*")
+                    break
+                description_lines.append(formatted_line)
+                char_count += len(formatted_line)
+
+            embed = discord.Embed(
+                title=f"Matched Mods ({len(content)} found):",
+                description="".join(description_lines),
+                color=discord.Color.blue()
+            )
             await ctx.respond(embed=embed)
         else:
-            embed = discord.Embed(title="Matched Mods:", description=f"Could not find any mods matching {mod}")
+            embed = discord.Embed(
+                title="Matched Mods:",
+                description=f"Could not find any mods matching `{mod}`.",
+                color=discord.Color.red()
+            )
+            await ctx.respond(embed=embed)
                            
     # ---------------------- NICK COMMAND ---------------------------
     @bridge.bridge_command(description="Change a user's nickname")
