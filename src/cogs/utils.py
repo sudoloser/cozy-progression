@@ -20,12 +20,10 @@ class Utils(commands.Cog):
             # Async a new aiohttp session
             async with aiohttp.ClientSession() as session:
                 # Async a fetch request and return the response to the latest variable
-                async with aiohttp.get(base_url) as response:
+                async with session.get(base_url) as response:
                     latest = await response.text()
-            
-            # Get the latest changelog
-            async with aiohttp.ClientSession() as session:
-                async with aiohttp.get(latest) as response:
+                # Get the latest changelog
+                async with session.get(latest) as response:
                     content = await response.text()
 
             await ctx.respond(content)
