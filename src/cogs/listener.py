@@ -4,11 +4,10 @@ from discord.ext import bridge, commands
 class Listener(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    
-    # Define a listener to listen for events
+
     @commands.Cog.listener()
-    # Define the on_message listener function
     async def on_message(self, message):
+        # Honeypot channel: any human message here is treated as a compromised account
         channel_id = 1558806012478226432
         invite_link = "https://discord.gg/VNjED7ucfD"
         guild = message.guild

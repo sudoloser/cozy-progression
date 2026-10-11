@@ -6,24 +6,21 @@ class General(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    # ------------ LINKS COMMAND ------------
     @bridge.bridge_command(description="Send related modpack links")
     async def links(self, ctx):
-        # Define a list of links
         links = [
             "- [Modrinth](<https://modrinth.com/modpack/cozyprogression>)",
             "[Twitter](<https://x.com/sudoloser>)"
         ]
-        # Separate them with a newline and bulletpoint
         response = "\n- ".join(links)
         embed = discord.Embed(title="Links", description=f"{response}", color=discord.Color.blue())
         await ctx.respond(embed=embed)
-    # ------------- DOWNLOAD COMMAND ---------
+
     @bridge.bridge_command(description="Link to download the modpack")
     async def download(self, ctx):
         embed = discord.Embed(title="Download", description="Search for Cozy Progression directly in your launcher (Prism, CurseForge, GDLauncher), or download the .mrpack manually from [Modrinth](<https://modrinth.com/modpack/cozyprogression>).", color=discord.Color.green())
         await ctx.respond(embed=embed)
-    # ------------- SOURCE COMMAND -----------
+
     @bridge.bridge_command(description="Shows the source code of the bot")
     async def source(self, ctx):
         source_link = "https://github.com/sudoloser/cozy-progression/tree/discord-bot"
@@ -37,7 +34,7 @@ class General(commands.Cog):
         embed.set_image(url=github_preview)
 
         await ctx.respond(embed=embed)
-    # ------------- RAM COMMAND --------------
+
     @bridge.bridge_command(description="Recommended allocated ram")
     async def ram(self, ctx):
         embed = discord.Embed(
@@ -60,7 +57,7 @@ class General(commands.Cog):
         )
 
         await ctx.respond(embed=embed)
-    # ------------- CRASH COMMAND ------------
+
     @bridge.bridge_command(description="Shows how to upload crash logs")
     async def crash(self, ctx):
         embed = discord.Embed(
@@ -87,6 +84,6 @@ class General(commands.Cog):
             inline=False,
         )
         await ctx.respond(embed=embed)
-def setup(bot): 
-    # Add cog to the bot
+
+def setup(bot):
     bot.add_cog(General(bot))

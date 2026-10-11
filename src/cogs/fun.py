@@ -7,8 +7,7 @@ from discord.ext import bridge, commands
 class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    
-     # ------------- 8BALL COMMAND ----------------
+
     @bridge.bridge_command(description="Ask an eightball!")
     async def ball(self, ctx, *, question):
         feelings = [
@@ -81,7 +80,7 @@ class Fun(commands.Cog):
             description = "You shouldn't be seeing this"
         )
         feeling = random.choice(feelings)
-        
+
         if feeling == "affirmative":
             response = random.choice(responses_affirmative)
 
