@@ -5,10 +5,10 @@ defaultDifficulty = "normal"
 # Resource pack IDs to have enabled by default on the first run.
 defaultResourcePacks = [ 
     "vanilla", 
-    "file/A Good Place Sample Pack.zip", 
     "file/Better-Leaves-9.6.zip", 
-    "file/crops-3d(2).zip", 
-    "file/(Forest) Cozy Progression RP.zip"
+    "a_good_place:default_animations", 
+    "file/§bDer's Shaded Font §916x §3v21§8.zip", 
+    "file/(Cabin) Cozy Progression.zip"
 ]
 
 # Set to true if the difficulty for new world's should be locked to the specific default. This cannot be unlocked by players without external tools! Probably a bad idea. I don't recommend. Why am I adding this option?

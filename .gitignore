@@ -1,3 +1,4 @@
 .vscode
 src
 pack/*.mrpack
+pack/*.zip

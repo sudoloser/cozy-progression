@@ -1,8 +1,16 @@
 hash-format = "sha256"
 
 [[files]]
+file = "config/.puzzle_cache/mojangstudios.png"
+hash = "27d2a588a33e94aff8cea4ea6090509ab3e10640f980e63dfd317c6b0dcd30df"
+
+[[files]]
 file = "config/MouseTweaks.cfg"
 hash = "4069ce1a439d8c37453c1b1e9f2037e0942674c7e48723a39b37eab245792ad4"
+
+[[files]]
+file = "config/adaptive-tooltips.json"
+hash = "34c0bab67c20049a2b22e164108f1b6972a07c617a33d0d590b5ca67d11828f8"
 
 [[files]]
 file = "config/afkcinematics.properties"
@@ -70,7 +78,7 @@ hash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 
 [[files]]
 file = "config/craftpresence.json"
-hash = "f3beefa270922f870e61bcce2c0ad844d3263d82718cdbc3bd969af697b5a9e2"
+hash = "24d268a86a5ca0c8951f8ca426e6777f542b7ad292493b9da24c60651cdbde40"
 
 [[files]]
 file = "config/crash_assistant/config.toml"
@@ -126,7 +134,7 @@ hash = "b5ae71db406b6c47535895cd325930fe4b994ddf98fd0fe2627d52a0629a43ba"
 
 [[files]]
 file = "config/defaultoptions-common.toml"
-hash = "cbff2193305b1edc0383fbc2ff5af37245aa6f145c4a3a993d851055841e3ac1"
+hash = "c56f318b08cf5b59238ff3fe595913006e785dfb114eff697bbf7222d83eadaf"
 
 [[files]]
 file = "config/defaultoptions/keybindings.txt"
@@ -134,11 +142,11 @@ hash = "982be7145fecbbc533a2e084b8ce7c3cbe9f794a944165ba939aae2187f120d3"
 
 [[files]]
 file = "config/defaultoptions/options.txt"
-hash = "1e4c93db0903160a4c1f929d840e6c68cce70a2015282f92078eb57b3ed8c50e"
+hash = "e891fbb45d3a8f023b8d06ea28f3b46523b61a5d35084e26484c9dfe6ba0da31"
 
 [[files]]
 file = "config/defaultoptions/servers.dat"
-hash = "4d8ebcaac20b6edbc11c95a76caa7fa1aa7748859f925d24a8d5628d16534938"
+hash = "148a9da35e2ce93a30f97036c03fb11c183e45ad0f88b543157d5dae72000dea"
 
 [[files]]
 file = "config/do_a_barrel_roll-client.json"
@@ -207,10 +215,6 @@ hash = "e8a5266d9906e4df1e8ae50074129f5886e26bcc29f60ff725d27c26d2d9ff6d"
 [[files]]
 file = "config/fancymenu/customization/title_screen_popup_layout.txt"
 hash = "4ac0a4567ea9e373d1d16d08e2ca87dd94d23f04a020b54f1c5f120d2d57fe2c"
-
-[[files]]
-file = "config/fancymenu/fancymenu.zip"
-hash = "4b9dd3462ce6153b2b1d542264b041b9a88c24da949601fa92671430002acb7f"
 
 [[files]]
 file = "config/fancymenu/layout_editor/widgets/element_layer_control.lewidget"
@@ -309,6 +313,10 @@ file = "config/frozenlib/main.json5"
 hash = "1ff5da8f722161dfee7f8fe8cc20bdbb50874629156841ea014fd96fabacd6c9"
 
 [[files]]
+file = "config/fwa.json"
+hash = "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+
+[[files]]
 file = "config/fzzy_config/keybinds.toml"
 hash = "26ac5810c9b5dc5c1968827357f0a58c58ac2b6f7b082630960228e16585062f"
 
@@ -329,6 +337,10 @@ file = "config/immediatelyfast.json"
 hash = "351554b5d847acfb0dcdd05a93b5b93f27035178bcbde4d5193b4dc5a5a2f11b"
 
 [[files]]
+file = "config/immersive-hotbar.json5"
+hash = "51c9e5aac8f7ff0c773a227b5aa380658b95f1753176f32ab66753d4c61a84ad"
+
+[[files]]
 file = "config/immersive_armors.json"
 hash = "c5deb8b07100eae8a76fa76ce207fc619d281b74b022bc9094784237125d3cc9"
 
@@ -342,7 +354,7 @@ hash = "4d3264b58c502afaeca3f44e8d2db0843c54b8ba957afd21a2d450fe10dafefb"
 
 [[files]]
 file = "config/iris.properties"
-hash = "821e26ee702b487c7d611ccac892d4f92b6e16a7cee1a70e869c9004ddbf8458"
+hash = "4013d392160dbcd076dc9540c1705d066be176416867a6f685dd7e9669d66d63"
 
 [[files]]
 file = "config/ixeris.toml"
@@ -434,7 +446,7 @@ hash = "a59667baa54738c1b294393a9b3652bcf7d392cdb8cba1c08a8006885b18e919"
 
 [[files]]
 file = "config/roughlyenoughitems/config.json5"
-hash = "ca309b4418ea010975a67b62fda8e4c232572bca3bbb0232b434d9aab5094a81"
+hash = "ba8cd83625ee202a6d873ce6dc559e751808d67c706c83a9de104d481e42e7d8"
 
 [[files]]
 file = "config/roughlyenoughitems/favorites.json5"
@@ -446,11 +458,11 @@ hash = "bc3e505bb23fcb6f7aae4f8c680668295db5d48a6b900735def6087b638a7e7a"
 
 [[files]]
 file = "config/roughlyenoughitems/pinyin.properties"
-hash = "9d1ec94fb174942048b51417b49fc4cc1f73022eae7c0a761b3d27e389b32302"
+hash = "a249013e8736b51e0e016ea69425b6a8b4fe7d553c8fb2d62fecede7e3ba0770"
 
 [[files]]
 file = "config/roughlyenoughitems/pinyin_double.properties"
-hash = "1486e3fa3a58e382948df990a7edd06019613918a892cc31d604cc257c8bb03e"
+hash = "1fedc3bf03ddba24b5203522c6723f3bf1817546fd1d9bc3ba9bf4960fc59e41"
 
 [[files]]
 file = "config/rrls.toml"
@@ -494,7 +506,7 @@ hash = "b627c4456e6fa0bc4b5f85e2f1cd949faedae3cb9afdaf2a5f52e6f3b6ae1f01"
 
 [[files]]
 file = "config/sodium-options.json"
-hash = "acb80d3df1778b5ce78343271d03cffdf4b099fc8ecf57d85eb1670a7fb17c6f"
+hash = "f6f002ae6ee1308b3c19b308cc5ea6be55f81c082d7e297270c51308ac8002a5"
 
 [[files]]
 file = "config/sodium-shadowy-path-blocks-options.json"
@@ -594,7 +606,7 @@ hash = "1f74f3290cdadbddc0aef4e961a1fa8b97bdd2167a8b8c00b3d2e1e938d091bb"
 
 [[files]]
 file = "config/waveycapes.json"
-hash = "1da99d26f48e54631db80aecf731bd0e107a4e6e92db46964491bf0bb104f13e"
+hash = "b9331fefd31ca6b8137e7681f86c64a0f80d391881f14dff60c1ac1d543b8fce"
 
 [[files]]
 file = "config/xaero/lib/client.cfg"

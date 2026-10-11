@@ -131,7 +131,16 @@
       "smallImageUrl": "",
       "startTimestamp": "{data.general.time}",
       "endTimestamp": "",
-      "buttons": {}
+      "buttons": {
+        "button_1": {
+          "label": "Discord",
+          "url": "https://discord.gg/VNjED7ucfD"
+        },
+        "button_0": {
+          "label": "Modrinth",
+          "url": "https://modrinth.com/modpack/cozyprogressionhttps://modrinth.com/modpack/cozyprogression"
+        }
+      }
     },
     "dynamicIcons": {},
     "dynamicVariables": {
