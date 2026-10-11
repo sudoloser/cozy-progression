@@ -1,0 +1,13 @@
+name = "Der's Shaded Font Plus (Default 16x)"
+filename = "§bDer's Shaded Font §916x §3v21§8.zip"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "339a1c43c456dfa9a12446e927ded68b5632d5ee"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8748702
+project-id = 1247959

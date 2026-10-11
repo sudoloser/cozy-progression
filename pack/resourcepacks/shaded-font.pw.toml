@@ -1,0 +1,13 @@
+name = "Shaded Font"
+filename = "ShadedFont.zip"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/oRdAgDpY/versions/x0NhREz2/ShadedFont.zip"
+hash-format = "sha512"
+hash = "789affe973445f7657f50d025d5cb245e79175fb8af4a9e1351236ba2c80eaa404599eb4310a222bd16a7cfcb4305137ea5a84a5f73cf0cec4e773131a9cf241"
+
+[update]
+[update.modrinth]
+mod-id = "oRdAgDpY"
+version = "x0NhREz2"

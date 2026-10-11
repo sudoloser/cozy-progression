@@ -673,6 +673,10 @@ file = "config/zoomify.json"
 hash = "82caee9b1f532332c798ee216c9a9ba5857c35e58afacba44946d9264fc05b36"
 
 [[files]]
+file = "icon.png"
+hash = "21e336d7f2ffe65352902e6546d30fc86e43509aa053ad5d5f0e2dfd8a7de52e"
+
+[[files]]
 file = "mods/3dskinlayers.pw.toml"
 hash = "71527989ac188c9ee212328a75bbfb0c9890950f2adad93447c670008dff4094"
 metafile = true
@@ -1225,40 +1229,35 @@ file = "resourcepacks/(Snow) Cozy Progression.zip"
 hash = "14f5fa284b330942646a642f3925c656bb4afc7da7a79dda5d6d75151b1ee90a"
 
 [[files]]
-file = "resourcepacks/.index/3d-crops.pw.toml"
-hash = "54c01a09a2400746f8c421820d6d86cafbd975b14272f0654db2b72f64466041"
+file = "resourcepacks/better-leaves.pw.toml"
+hash = "c26f8da8b6f013fb7e917e29fc6ae783eb379c539da12d9d61196bc762fd26e1"
 metafile = true
 
 [[files]]
-file = "resourcepacks/.index/better-leaves.pw.toml"
-hash = "27619fef0e36cb7dc995978037f55c128abdcde09ecbcbb99a045ed981d170c3"
+file = "resourcepacks/motschens-better-leaves.pw.toml"
+hash = "8dfb9c20ca9bb8ef35db6edbfbd5d4a0bebeb6c74d1a4abc62fb64e4508c1f7b"
 metafile = true
 
 [[files]]
-file = "resourcepacks/.index/shaded-font.pw.toml"
-hash = "432cba756da5167f99254fefcf339a08beb13bd6e5f915f90a913d5753a1db53"
+file = "resourcepacks/shaded-font-plus.pw.toml"
+hash = "3b754b6b8fb11974da778c0a9dbdba094f03fa4d90aac47ab226546c25e648af"
 metafile = true
 
 [[files]]
-file = "resourcepacks/A Good Place Sample Pack.zip"
-hash = "58144f58b75bf53786ac7f69d89d5311a7eb96525100fd870326609f5ab1544c"
+file = "resourcepacks/shaded-font.pw.toml"
+hash = "87be07a0d75ebb3982a6fc6cd56577a62f16f0d5604a4d7e8de50af8f62beeb6"
+metafile = true
 
 [[files]]
-file = "resourcepacks/Better-Leaves-9.6.zip"
-hash = "cbeeccd774f910ed270dbe9651d789a8f785d055499f846e466d86f9cae91e90"
+file = "servers.dat"
+hash = "148a9da35e2ce93a30f97036c03fb11c183e45ad0f88b543157d5dae72000dea"
 
 [[files]]
-file = "resourcepacks/ShadedFont.zip"
-hash = "4b9fb0c36f7cece72b927f1a9fb8bc188c261afe9d522230c6a1abeaa5133598"
+file = "shaderpacks/light-shaders.pw.toml"
+hash = "1f3fb56c69f4b956f6692099750fb6b039638f432f470f1ae0880cda9e1aeac8"
+metafile = true
 
 [[files]]
-file = "resourcepacks/crops-3d(2).zip"
-hash = "d63df002bd227c00ee11b8b5f64b751b152b3e0f883a135c2496564703bf67c5"
-
-[[files]]
-file = "shaderpacks/LIGHT-Shaders-1.8.0.zip"
-hash = "c59feba85a5eccf813bcc5aa650c406dcf27c6ff5a9990b505297a13b30a5473"
-
-[[files]]
-file = "shaderpacks/Solas Shader V3.7b.zip"
-hash = "b7dfe4c7353d677a92cc4c86b87bc0633f1014305d927ca6a482c303427bf825"
+file = "shaderpacks/solas-shader.pw.toml"
+hash = "f3232f8d65aa4e3f14dc138bef865a066e4f99482e605dcfd6656bc51b1c9998"
+metafile = true
