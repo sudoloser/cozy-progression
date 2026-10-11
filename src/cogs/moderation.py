@@ -174,7 +174,6 @@ class Moderation(commands.Cog):
             value="In practice, it helps defend against compromised accounts by kicking them and deleting their messages.",
             inline=False
         )
-
         await ctx.send(embed=embed)
 def setup(bot):
     bot.add_cog(Moderation(bot))
