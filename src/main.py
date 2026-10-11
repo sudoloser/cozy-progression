@@ -64,6 +64,115 @@ async def on_application_command_error(ctx:discord.ApplicationContext, error:dis
 
        await ctx.respond(embed=embed)
 
+client.persistent_views_added = False
+
+# Define Ticket class
+class Ticket(discord.ui.View):
+    # Initialize self with select ui
+    def __init__(self):
+        super().__init__(timeout=None)
+    @discord.ui.select(
+        custom_id = "ticketing-1",
+        placeholder = "Open a ticket",
+        min_values = 1,
+        max_values = 1,
+        options = [
+            discord.SelectOption(
+                label="Report",
+                description="Report a user"
+            ),
+            discord.SelectOption(
+                label="Suggestion",
+                description="Suggest an improvement for the server"
+            ),
+            discord.SelectOption(
+                label="Mod request",
+                description="Request a mod to be added to Cozy Progression"
+            ),
+            discord.SelectOption(
+                label="Other",
+                description="All other"
+            )
+        ]
+    )
+    # Define ticket callback
+    async def ticketCallback(self, select, interaction):
+        # Define permission overwrites
+        overwrites = {
+            # Makes it so that @everyone cannot view the channel
+            interaction.guild.default_role: discord.PermissionOverwrite(view_channel=False),
+            # Allows for the interaction user to view and message in the channel
+            interaction.user: discord.PermissionOverwrite(view_channel=True, send_messages=True, embed_links=True),
+            # Allows for bots to view and message in the channel
+            interaction.guild.me: discord.PermissionOverwrite(view_channel=True, send_messages=True, read_message_history=True)
+        }
+        # Make new channel.
+        # This will make something like:
+        # "ticket-x.v.c."
+        channel = await interaction.guild.create_text_channel(f"ticket-{interaction.user.name}", overwrites=overwrites, reason=f"Ticket for {interaction.user.name}")
+        await interaction.response.send_message(f"Ticket opened at {channel.mention}", ephemeral=True)
+
+        # Add embeds for each selection
+        if select.values[0]=="Report":
+            embed = discord.Embed(
+                title="Report a user", 
+                description=f"Welcome to your ticket, {interaction.user.mention}. The support team will be with you shortly.", 
+                color=discord.Color.green(),
+                
+            )
+            embed.add_field(
+                name="What we need from you:",
+                value="1. The user's username or user id\n2. A valid reason for the report\n3. A link to the message.\n>Note:\n>If the message was deleted, you may send us a screenshot."
+            )
+            await channel.send(embed=embed, view=CloseTicket())
+        elif select.values[0]=="Mod request":
+            embed = discord.Embed(
+                title="Mod request", 
+                description=f"Welcome to your ticket, {interaction.user.mention}. The maintainer team will be with you shortly.", 
+                color=discord.Color.green(),
+                
+            )
+            embed.add_field(
+                name="What we need from you:",
+                value="1. The mod's name and modrinth link\n2. Why it would fit in with either cozy or progression"
+            )
+            await channel.send(embed=embed, view=CloseTicket())
+        elif select.values[0]=="Suggestion":
+            embed = discord.Embed(
+                title="Server suggestion", 
+                description=f"Welcome to your ticket, {interaction.user.mention}. The server managers will be with you shortly.", 
+                color=discord.Color.green(),
+                
+            )
+            await channel.send(embed=embed, view=CloseTicket())
+        else:
+            embed = discord.Embed(
+                title="Other", 
+                description=f"Welcome to your ticket, {interaction.user.mention}. The support team will be with you shortly.", 
+                color=discord.Color.green(),
+                
+            )
+            await channel.send(embed=embed, view=CloseTicket())
+# Define CloseTicket class
+class CloseTicket(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=None)
+    # Define close ticket button with red color (danger)
+    @discord.ui.button(
+        label="Close ticket",
+        style=discord.ButtonStyle.danger,
+        emoji="🔒",
+        custom_id="closeticket"
+    )
+    # Define callback with button and interaction
+    async def callback(self, button, interaction):
+        # When clicked, send this message
+        await interaction.response.send_message("Closing this ticket...")
+        # Wait 2 seconds
+        await asyncio.sleep(2)
+        # Delete channel
+        await interaction.channel.delete()
+
 # Listen for all events
 @client.listen()
 async def on_ready():
@@ -73,6 +182,13 @@ async def on_ready():
             type=discord.ActivityType.watching, name="!help"
         )
     )
+
+    # Check if persistent views added is false
+    if not client.persistent_views_added:
+        # Add the ticket view
+        client.add_view(Ticket())
+        client.add_view(CloseTicket())
+        client.persistent_views_added = True
 
 # Define "Ping, pong!" command in the bridge
 @client.bridge_command(description="Ping, pong!")
@@ -140,6 +256,17 @@ async def help(ctx):
     try: await paginator.respond(ctx.interaction)
     # For prefix commands, we send it as a regluar message
     except: await paginator.send(ctx)
+
+@client.bridge_command(description="Start the ticketing system")
+@bridge.has_permissions(administrator=True)
+async def ticketing(ctx):
+    embed = discord.Embed(
+        title="Create a ticket",
+        description="Choose a category below for your ticket",
+        color=discord.Color.green()
+    )
+    await ctx.respond("Successfully started ticketing system", ephemeral=True)
+    await ctx.send(embed=embed, view=Ticket())
 
 # Check all files in the cogs directory
 for filename in os.listdir("./cogs"):
