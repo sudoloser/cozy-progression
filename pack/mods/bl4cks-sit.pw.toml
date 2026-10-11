@@ -1,0 +1,17 @@
+name = "Sit"
+filename = "sit-fabric-26.1.1-1.5.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/VKXzIykF/versions/vU0mXH0A/sit-fabric-26.1.1-1.5.1.jar"
+hash-format = "sha512"
+hash = "3a2816e750b02606c80c7ef9b44d7b19812e8e864802e0bbaf4550c5b84171efbb7ba0de936a627e68ddb4188c2d1df1fb57a9062f5a3777002d189daf5ecf09"
+
+[update]
+[update.modrinth]
+mod-id = "VKXzIykF"
+version = "vU0mXH0A"
+
+[update.curseforge]
+file-id = 7886688
+project-id = 328163

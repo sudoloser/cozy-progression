@@ -1,0 +1,17 @@
+name = "Player Animation Library"
+filename = "PlayerAnimationLibMerged-1.2.8+mc.26.2.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/ha1mEyJS/versions/ZMIJpO9T/PlayerAnimationLibMerged-1.2.8%2Bmc.26.2.jar"
+hash-format = "sha512"
+hash = "6ddb2a1cfd71a5022210c68fcc0524ab4ddd08538b7a5892fa51395fcdbb70ab43ab1d8acad2300ab02065fc068616537b710d4e2ce1576943dc15e208cc4853"
+
+[update]
+[update.modrinth]
+mod-id = "ha1mEyJS"
+version = "ZMIJpO9T"
+
+[update.curseforge]
+file-id = 9080910
+project-id = 1283899

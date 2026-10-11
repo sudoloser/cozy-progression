@@ -1,0 +1,17 @@
+name = "Comforts"
+filename = "comforts-fabric-16.0.0+26.2.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/SaCpeal4/versions/FBaK3TtW/comforts-fabric-16.0.0%2B26.2.jar"
+hash-format = "sha512"
+hash = "77195c223a7f8d42fe8cc69a9a38907d04ba4804b8392c08d6cab5de1721e7bbfa5424ded2fa0e38b0b61a6df3cec607e5a7a2c168d2061dfb853a905c1e1ae5"
+
+[update]
+[update.modrinth]
+mod-id = "SaCpeal4"
+version = "FBaK3TtW"
+
+[update.curseforge]
+file-id = 8303503
+project-id = 276951

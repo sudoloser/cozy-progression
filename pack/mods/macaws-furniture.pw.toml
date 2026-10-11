@@ -1,0 +1,17 @@
+name = "Macaw's Furniture"
+filename = "mcw-furniture-3.4.2-mc26.2fabric.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/dtWC90iB/versions/ptL25rVF/mcw-furniture-3.4.2-mc26.2fabric.jar"
+hash-format = "sha512"
+hash = "ed39b132609eb31ad7205d667f844097ef04d66a44982f260216cab049f42ebc9458ffd27f251cd67294aa36ba84eaab9bab763e1e6db92f645c51b776ac31d5"
+
+[update]
+[update.modrinth]
+mod-id = "dtWC90iB"
+version = "ptL25rVF"
+
+[update.curseforge]
+file-id = 8286494
+project-id = 359540

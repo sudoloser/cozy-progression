@@ -1,0 +1,17 @@
+name = "AFK Cinematics"
+filename = "afk-cinematics-1.0.5+26.2.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/MjVuY1gY/versions/ggKNg45G/afk-cinematics-1.0.5%2B26.2.jar"
+hash-format = "sha512"
+hash = "6761fa4baf7142006d1d37181b8f9f8eedb82818d8d16ac6787bc167f45d940762cc4cf41050afb151fefd1875fe60beeb2e1ea7d604ad83472cc9382d3a5b2e"
+
+[update]
+[update.modrinth]
+mod-id = "MjVuY1gY"
+version = "ggKNg45G"
+
+[update.curseforge]
+file-id = 8313636
+project-id = 1494449

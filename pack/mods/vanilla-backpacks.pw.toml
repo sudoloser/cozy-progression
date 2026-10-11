@@ -1,0 +1,17 @@
+name = "Backpacks!"
+filename = "1.3.5-backpacks_mod-26.2.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/MGcd6kTf/versions/X3jGY5qn/1.3.5-backpacks_mod-26.2.jar"
+hash-format = "sha512"
+hash = "14bad0cfeeed80a53ad216af989e3cf19875324474783d76da3a40514d20dbbbf9e06ff71aa472a51086130b2747ebef6a78f47a5a657672de13d4c374ce0e46"
+
+[update]
+[update.modrinth]
+mod-id = "MGcd6kTf"
+version = "X3jGY5qn"
+
+[update.curseforge]
+file-id = 8289265
+project-id = 1081352

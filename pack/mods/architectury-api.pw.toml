@@ -1,0 +1,17 @@
+name = "Architectury API"
+filename = "architectury-fabric-21.1.12.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/lhGA9TYQ/versions/ohb3PBGZ/architectury-fabric-21.1.12.jar"
+hash-format = "sha512"
+hash = "df244fce6ffe38209e70d88696e05570e261b43780f76bd19e7a1813ffc29e128b21de6776816f3e76e50ffa0dcd32141fc3a09e5c33066f46e35d9d364dc173"
+
+[update]
+[update.modrinth]
+mod-id = "lhGA9TYQ"
+version = "ohb3PBGZ"
+
+[update.curseforge]
+file-id = 9111234
+project-id = 419699

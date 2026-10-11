@@ -1,0 +1,17 @@
+name = "Simple Copper Pipes"
+filename = "SimpleCopperPipes-2.2-mc26.2-fabric.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/9r4ZkgSN/versions/E0nIunSG/SimpleCopperPipes-2.2-mc26.2-fabric.jar"
+hash-format = "sha512"
+hash = "18a6b69b076295c52b0a8d6fde854f5bd165d849713a7c1058f065e7ecb59ad07a2fe292bddae24bc524b59fd85e623d8a64c312e86369ee7063465fc7a9bb18"
+
+[update]
+[update.modrinth]
+mod-id = "9r4ZkgSN"
+version = "E0nIunSG"
+
+[update.curseforge]
+file-id = 8936366
+project-id = 571336

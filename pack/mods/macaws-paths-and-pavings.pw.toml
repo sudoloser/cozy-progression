@@ -1,0 +1,17 @@
+name = "Macaw's Paths and Pavings"
+filename = "mcw-paths-1.1.1-mc26.2fabric.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/VRLhWB91/versions/LLYA3vec/mcw-paths-1.1.1-mc26.2fabric.jar"
+hash-format = "sha512"
+hash = "701619d1989432674b7ffc7642e045c222a29c7c42528721107e09b330e6179e5872a920bd00c544809472209d8c1c4259bab28b1cd29b80a9d518bc61f8efa9"
+
+[update]
+[update.modrinth]
+mod-id = "VRLhWB91"
+version = "LLYA3vec"
+
+[update.curseforge]
+file-id = 8286496
+project-id = 629153

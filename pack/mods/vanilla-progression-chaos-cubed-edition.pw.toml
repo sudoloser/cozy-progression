@@ -1,0 +1,17 @@
+name = "Vanilla Progression Chaos Cubed Edition"
+filename = "vanillaprogression-1.7.13.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/V3vClzZ9/versions/jCIzEcPx/vanillaprogression-1.7.13.jar"
+hash-format = "sha512"
+hash = "fa3d9e9ebc5486e124b35647d8ed612ecd2f77164dd0ea3d41b4f31b5570cbb63a8bec34a55896904c2636d3cdfd93cf85edb36399fe15e9c648648bfe8435a0"
+
+[update]
+[update.modrinth]
+mod-id = "V3vClzZ9"
+version = "jCIzEcPx"
+
+[update.curseforge]
+file-id = 8674563
+project-id = 1628636

@@ -1,0 +1,17 @@
+name = "Realistic Bees"
+filename = "realisticbees-26.2.0-4.4.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/tG6HkcWx/versions/x7QmKlw2/realisticbees-26.2.0-4.4.jar"
+hash-format = "sha512"
+hash = "5e9caaac03228bfd9639fef4c94ec04d1db603cec8567a2fc49a1c74612d31de9efbbdb9a5b7051dba011972c70376da42696d3f907081a8adbfc7640672b71f"
+
+[update]
+[update.modrinth]
+mod-id = "tG6HkcWx"
+version = "x7QmKlw2"
+
+[update.curseforge]
+file-id = 9033077
+project-id = 410743

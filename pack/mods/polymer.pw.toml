@@ -1,0 +1,17 @@
+name = "Polymer"
+filename = "polymer-bundled-0.17.5+26.2.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/xGdtZczs/versions/561YnR5f/polymer-bundled-0.17.5%2B26.2.jar"
+hash-format = "sha512"
+hash = "bcf72922fba4a6a94cdce10c55018e616831be9d780345ddd010e0de35c6aa7e1e5863ac7afbb9738514b3a4ea4702779631c465e19c390c754b941687b42bcb"
+
+[update]
+[update.modrinth]
+mod-id = "xGdtZczs"
+version = "561YnR5f"
+
+[update.curseforge]
+file-id = 8787769
+project-id = 551890

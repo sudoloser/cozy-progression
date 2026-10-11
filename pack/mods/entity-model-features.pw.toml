@@ -1,0 +1,17 @@
+name = "[EMF] Entity Model Features"
+filename = "entity_model_features-3.3.11-26.2-fabric.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/4I1XuqiY/versions/tgEvvPhr/entity_model_features-3.3.11-26.2-fabric.jar"
+hash-format = "sha512"
+hash = "7e3d6c76033c60a01f6d89a7d6ee07436f08a1f63ed78f93d8d1623d0f49b6f229bcdc2f24d9e7b70c92fda6179339980f65702132b57aa5f241c006f2113903"
+
+[update]
+[update.modrinth]
+mod-id = "4I1XuqiY"
+version = "tgEvvPhr"
+
+[update.curseforge]
+file-id = 9064962
+project-id = 844662

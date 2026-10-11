@@ -1,0 +1,17 @@
+name = "Universal Graves"
+filename = "graves-3.12.0+26.2.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/yn9u3ypm/versions/BZfhXd0q/graves-3.12.0%2B26.2.jar"
+hash-format = "sha512"
+hash = "499f52b063b1313351d7128fc94f46ac0e256684ebd7d39206a6d331a74c7fb276364448ddb4563a8bc08f8ca3c948a2f7f065e70b23b10cf24686f69e8b3013"
+
+[update]
+[update.modrinth]
+mod-id = "yn9u3ypm"
+version = "BZfhXd0q"
+
+[update.curseforge]
+file-id = 8340429
+project-id = 497175

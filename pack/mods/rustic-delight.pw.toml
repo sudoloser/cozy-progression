@@ -1,0 +1,17 @@
+name = "Rustic Delight"
+filename = "rusticdelight-fabric-26.2-1.7.0.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/foa4fGIH/versions/Ioo3Id1t/rusticdelight-fabric-26.2-1.7.0.jar"
+hash-format = "sha512"
+hash = "8240f74b0276d6fbfb8aa3e0ebd320a8668a7f297918ef0dbd6dc6b8c42726aecf1dd80ad5c0dea7d54b0cb836192e57c7f60fb903a416220be7c84ca7ef4e23"
+
+[update]
+[update.modrinth]
+mod-id = "foa4fGIH"
+version = "Ioo3Id1t"
+
+[update.curseforge]
+file-id = 8550569
+project-id = 1106612

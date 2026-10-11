@@ -1,0 +1,17 @@
+name = "Xaero's Minimap"
+filename = "xaerominimap-fabric-26.2-26.6.0.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/1bokaNcj/versions/JRopWECg/xaerominimap-fabric-26.2-26.6.0.jar"
+hash-format = "sha512"
+hash = "7452e9d462d5803eb81ef0f931d265da86ce81917eba6de124cccee40eb244d7e4bfd88eb85f8bb739970ecd12d74a6b0754e60c3fcbbdd9cabb0012c1f04f46"
+
+[update]
+[update.modrinth]
+mod-id = "1bokaNcj"
+version = "JRopWECg"
+
+[update.curseforge]
+file-id = 9067199
+project-id = 263420

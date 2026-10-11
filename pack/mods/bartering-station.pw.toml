@@ -1,0 +1,17 @@
+name = "Bartering Station"
+filename = "BarteringStation-v26.2.0-mc26.2.x-Fabric.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/EOig9U0j/versions/vaBOiOWp/BarteringStation-v26.2.0-mc26.2.x-Fabric.jar"
+hash-format = "sha512"
+hash = "912a64196cbb691e0faa54270a13ea5a7e7eecd7cd8fa511db1ab76dced69e5a59f8100fce57871290ed5dc7acde4a4969e10f783355df5e0f975094f42d91dd"
+
+[update]
+[update.modrinth]
+mod-id = "EOig9U0j"
+version = "vaBOiOWp"
+
+[update.curseforge]
+file-id = 8273814
+project-id = 666940

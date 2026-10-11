@@ -1,0 +1,17 @@
+name = "Immersive Hotbar"
+filename = "immersive-hotbar-1.2.2-26.2.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/hsPB5xMD/versions/hAT45lLg/immersive-hotbar-1.2.2-26.2.jar"
+hash-format = "sha512"
+hash = "9819096ab1266aa6e58ec005dbd7a2cba67bcc4512593af6d3314888c24538b5ebf39ab6bee2276c06b4ef180c91c50b8d63942701376a69f11f075ed0c3a87b"
+
+[update]
+[update.modrinth]
+mod-id = "hsPB5xMD"
+version = "hAT45lLg"
+
+[update.curseforge]
+file-id = 8841175
+project-id = 1238099

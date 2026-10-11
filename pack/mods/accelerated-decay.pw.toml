@@ -1,0 +1,17 @@
+name = "Accelerated Decay"
+filename = "accelerated-decay-fabric-26.2.0.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/laX5CckD/versions/sbVISiVG/accelerated-decay-fabric-26.2.0.1.jar"
+hash-format = "sha512"
+hash = "8a5ef0e1b1b991440d5a06fed9613eaaec3378132985559cf9a64ea4688894fcfc1edce9982748b47f43a96401d6315bc390f03ab2daad750a633b3f897d06de"
+
+[update]
+[update.modrinth]
+mod-id = "laX5CckD"
+version = "sbVISiVG"
+
+[update.curseforge]
+file-id = 8334875
+project-id = 699872

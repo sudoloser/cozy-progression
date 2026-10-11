@@ -1,0 +1,17 @@
+name = "FrozenLib"
+filename = "FrozenLib-3.0.3-mc26.2-fabric.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/9KawNmQc/versions/DFsk0uXB/FrozenLib-3.0.3-mc26.2-fabric.jar"
+hash-format = "sha512"
+hash = "9b3160de76c2d83ff6626be1e0fe71ca181fcdd4eaee5718f155d7e9a89765dcede3d8dc34807b20d152fddd6726ddcd0b8358a2171e700b8a069351ae3c0d82"
+
+[update]
+[update.modrinth]
+mod-id = "9KawNmQc"
+version = "DFsk0uXB"
+
+[update.curseforge]
+file-id = 9109050
+project-id = 709773

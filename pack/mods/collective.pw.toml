@@ -1,0 +1,17 @@
+name = "Collective"
+filename = "collective-26.2.0-8.45.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/e0M1UDsY/versions/CfwWA1M5/collective-26.2.0-8.45.jar"
+hash-format = "sha512"
+hash = "2837d44f4846a5afb47c948a83f22cb3fee8daf0daf70bc5fd18114ab776d26aa0eed2a6b82a6b058525fa0d0f04094fcac6cffccfa9fec59907c9c329c0656f"
+
+[update]
+[update.modrinth]
+mod-id = "e0M1UDsY"
+version = "CfwWA1M5"
+
+[update.curseforge]
+file-id = 9129062
+project-id = 342584

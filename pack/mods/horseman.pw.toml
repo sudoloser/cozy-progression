@@ -1,0 +1,17 @@
+name = "Horseman"
+filename = "horseman-fabric-26.2-1.7.5.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/qIv5FhAA/versions/xU6ysEWF/horseman-fabric-26.2-1.7.5.jar"
+hash-format = "sha512"
+hash = "a2638c182bb2a3fcd33a2428506a746db42eae4e9923022a72edb7830e949a8b025ca5c0f9ec29ebcd6c7735a9fb73a3c0c2349c83b38ee346dbc1ed34bea184"
+
+[update]
+[update.modrinth]
+mod-id = "qIv5FhAA"
+version = "xU6ysEWF"
+
+[update.curseforge]
+file-id = 8735226
+project-id = 1082085

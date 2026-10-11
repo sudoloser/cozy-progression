@@ -1,0 +1,17 @@
+name = "Prickle"
+filename = "PrickleMC-fabric-MC26.2-26.2.0.3.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "d3ccf4ea74f3f4b5d4c7e879fab619102bc753f2"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8397204
+project-id = 1023259
+
+[update.modrinth]
+mod-id = "aaRl8GiW"
+version = "XdvtdRYJ"

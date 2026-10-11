@@ -1,0 +1,17 @@
+name = "UniLib"
+filename = "UniLib-1.2.1+26.2-fabric.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "ee3e1bc9a403368414a35e81b5334fffabb11bcb"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8275359
+project-id = 1056812
+
+[update.modrinth]
+mod-id = "nT86WUER"
+version = "jmug71pF"

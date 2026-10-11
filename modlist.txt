@@ -6,6 +6,7 @@ AmbientSounds
 Animatica Refabricated
 AppleSkin
 Architectury
+Adaptive Tooltips
 Backpacks!
 Balm
 Bartering Station
@@ -31,7 +32,6 @@ Dungeons and Taverns
 Dynamic FPS
 Enchanted Vertical Slabs
 EnchantmentDescriptions
-Enhanced Biomes Music
 Entity Model Features
 Entity Texture Features
 Fabric API
@@ -51,6 +51,7 @@ Horseman
 ImmediatelyFast
 Immersive Armors
 Immersive Melodies
+Immersive Hotbar
 Iris
 Ixeris
 Konkrete
@@ -92,7 +93,6 @@ SuperMartijn642's Config Library
 SuperMartijn642's Core Lib
 Tectonic
 Terralith
-Tooltip Tweaks
 Towns and Towers
 UniLib
 Universal Graves

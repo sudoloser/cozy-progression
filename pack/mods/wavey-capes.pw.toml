@@ -1,0 +1,17 @@
+name = "Wavey Capes"
+filename = "waveycapes-fabric-1.11.2-mc26.2.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/kYuIpRLv/versions/lgCaDv04/waveycapes-fabric-1.11.2-mc26.2.jar"
+hash-format = "sha512"
+hash = "d027d800275efe2c34a6f5dd90724ac3035bcdb2a952625ac4958f8dbac27ad826515a34098ea42c5dde5bcd0e4a76b38bd51b8225a02e6e743ffed1cb1ba597"
+
+[update]
+[update.modrinth]
+mod-id = "kYuIpRLv"
+version = "lgCaDv04"
+
+[update.curseforge]
+file-id = 8914498
+project-id = 521594

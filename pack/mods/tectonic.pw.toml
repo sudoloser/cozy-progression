@@ -1,0 +1,17 @@
+name = "Tectonic"
+filename = "tectonic-3.0.28-fabric-26.2.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/lWDHr9jE/versions/tGbplDzo/tectonic-3.0.28-fabric-26.2.jar"
+hash-format = "sha512"
+hash = "c653ee42fe48c1be9512fa7791e8495095ae01cb607555202714bbb95cb49da272128bb295e8f8c262b63739e7ca2de4bba9196e1738b06012b498d220b55acf"
+
+[update]
+[update.modrinth]
+mod-id = "lWDHr9jE"
+version = "tGbplDzo"
+
+[update.curseforge]
+file-id = 8855047
+project-id = 686836
