@@ -84,7 +84,6 @@ class Ticket(discord.ui.View):
             interaction.guild.me: discord.PermissionOverwrite(view_channel=True, send_messages=True, read_message_history=True),
             
             role: discord.PermissionOverwrite(
-                role,
                 view_channel=True,
                 send_messages=True,
                 embed_links=True
@@ -116,7 +115,7 @@ class Ticket(discord.ui.View):
             )
             embed.add_field(
                 name="What we need from you:",
-                value="1. The mod's name, Modrinth **and** CurseForge link.\n>If the mod is not on CurseForge, or if the mod is only on CurseForge, it will be added as a **recommended mod**. Recommended mods are **NOT** included in the modpack, but are mentioned in the description as recommended.\n2. Why it would fit in with either cozy or progression"
+                value="1. The mod's name, Modrinth **and** CurseForge link.\n> If the mod is not on CurseForge, or if the mod is only on CurseForge, it will be added as a **recommended mod**. Recommended mods are **NOT** included in the modpack, but are mentioned in the description as recommended.\n2. Why it would fit in with either cozy or progression"
             )
             await channel.send(f"{interaction.user.mention}, <@&{maintainers_roleid}>", embed=embed, view=CloseTicket())
         elif select.values[0]=="Suggestion":
