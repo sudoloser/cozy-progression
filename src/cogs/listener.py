@@ -16,7 +16,7 @@ class Listener(commands.Cog):
         if message.channel.id == channel_id:
             if user == self.bot.user:
                 return
-            elif user.guild_permissions(administrator=True):
+            elif user.guild_permissions.administrator:
                 return
             else:
                 try:

@@ -161,7 +161,8 @@ class Moderation(commands.Cog):
     async def honeypot(self, ctx):
         embed = discord.Embed(
             title="Honeypot",
-            description="DO NOT SEND MESSAGES IN THIS CHANNEL!"
+            description="DO NOT SEND MESSAGES IN THIS CHANNEL!",
+            color=discord.Color.red()
         )
         embed.add_field(
             name="What will happen if i do?",

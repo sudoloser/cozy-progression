@@ -173,7 +173,7 @@ pages = [
         embeds = [
             discord.Embed(
                 title="General",
-                description="**/links\n/download\n/ram\n/crash**"
+                description="**/links\n/source\n/download\n/ram\n/crash**"
             )
         ],
     ),
@@ -181,7 +181,7 @@ pages = [
         embeds = [
             discord.Embed(
                 title="Moderation",
-                description="**/ban\n/kick\n/timeout\n/purge\n/nick\n/role\n/automod enable**\n/ticketing"
+                description="**/ban\n/kick\n/timeout\n/purge\n/nick\n/role\n/automod enable**\n/ticketing\n/honeypot"
             )
         ],
     ),
