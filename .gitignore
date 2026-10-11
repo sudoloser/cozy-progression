@@ -2,3 +2,6 @@
 
 src/.env
 src/cogs/__pycache__
+pack/Cozy Progression.zip
+.gitignore
+pack/pack.mrpack
