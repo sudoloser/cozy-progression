@@ -6,9 +6,10 @@ import random
 import time
 import aiohttp
 import os
+from discord.ext.pages import Paginator, Page
 
 # Import Discord Gateway Bridge\
-from discord.ext import bridge
+from discord.ext import bridge, commands
 # Import load_dotenv
 from dotenv import load_dotenv
 
@@ -26,14 +27,52 @@ class CozyProgression(bridge.Bot):
     TOKEN = os.getenv("BOT_TOKEN")
     # Define intents
     intents = discord.Intents.all()
+    # Disable help command
+    help_command = None
 
-# Define bot client with prefix, intents, and RPC
-client = CozyProgression(intents=CozyProgression.intents, command_prefix="!", activity=discord.Game(name="!commands"))
+# Define bot client with prefix and intents
+client = CozyProgression(intents=CozyProgression.intents, command_prefix="!", help_command=CozyProgression.help_command)
+
+# Error Handling
+# Define a client event with context & exceptions
+@client.event
+async def on_application_command_error(ctx:discord.ApplicationContext, error:discord.DiscordException):
+    # If the error is commands.CommandOnCooldown, then respond with a message
+    if isinstance(error, commands.CommandOnCooldown):
+        await ctx.respond("This command is currently on cooldown.")
+    # If the error is about missing permissions, then respond with a message
+    elif isinstance(error, commands.MissingPermissions):
+        await ctx.respond("You do not have the required permissions to run this command.")
+    # If the error is about the bot having missing permissions, then respond with a message
+    elif isinstance(error, commands.BotMissingPermissions):
+        await ctx.respond("I do not have enough permissions to do this action!")
+    # If the error is about an nsfw channel being required to run the command, respond with a message
+    elif isinstance(error, commands.NSFWChannelRequired):
+        await ctx.respond("This command can only be used in an NSFW channel.")
+    # All other, respond with error
+    else:
+       embed = discord.Embed(
+        title="Failure", 
+        description="This action could not be completed with the following error:", 
+        color=discord.Color.red
+       )
+
+       embed.add_field(
+        name="Error",
+        value=f"`{error}`"
+       )
+
+       await ctx.respond(embed=embed)
 
 # Listen for all events
 @client.listen()
 async def on_ready():
     print(f"Logged in as: {client.user.name}")
+    await client.change_presence(
+        activity=discord.Activity(
+            type=discord.ActivityType.watching, name="!help"
+        )
+    )
 
 # Define "Ping, pong!" command in the bridge
 @client.bridge_command(description="Ping, pong!")
@@ -55,6 +94,52 @@ async def ping(ctx):
     # This is the quilivent of the following snipped of code in JS:
     # return "Pong! Bot replied in ${latency}";
     await ctx.respond(f"Pong! Bot replied in {latency} ms")
+
+# Define pages list
+pages = [
+    Page(
+        embeds=[
+            discord.Embed(
+                title="Cozy Progression Bot", 
+                description="Cozy Progression Bot is a multi purpose bot built with the Cozy Progression modpack in mind.",
+            )
+        ],
+    ),
+    Page( 
+        embeds = [
+            discord.Embed(
+                title="General",
+                description="**/links\n/download\n/ram\n/crash**"
+            )
+        ],
+    ),
+    Page(
+        embeds = [
+            discord.Embed(
+                title="Moderation",
+                description="**/ban\n/kick\n/timeout\n/purge\n/nick\n/role\n/automod enable**"
+            )
+        ],
+    ),
+    Page(
+        embeds = [
+            discord.Embed(
+                title="Utilities",
+                description="**/changelog\n/mod\n/banner\n/avatar\n/random number\n/random color**"
+            )
+        ],
+    ),
+]
+
+@client.bridge_command(description="Information about the bot")
+async def help(ctx):
+    paginator = Paginator(pages=pages)
+
+    # Tries sending the interaction response. This will only work
+    # if its a slash command
+    try: await paginator.respond(ctx.interaction)
+    # For prefix commands, we send it as a regluar message
+    except: await paginator.send(ctx)
 
 # Check all files in the cogs directory
 for filename in os.listdir("./cogs"):

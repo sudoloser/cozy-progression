@@ -5,13 +5,7 @@ from discord.ext import bridge, commands
 class General(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    
-    # ------------ HELP COMMAND ------------
-    @bridge.bridge_command(description="List of commands")
-    async def commands(self, ctx):
-        response = "# List of commands:\n\n## Moderation:\n\n- **!kick**\n- **!ban**\n- **!purge**\n## Utility:\n\n- **!changelog**\n- **!nick**"
 
-        await ctx.respond(response)
     # ------------ LINKS COMMAND ------------
     @bridge.bridge_command(description="Send related modpack links")
     async def links(self, ctx):

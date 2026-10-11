@@ -62,29 +62,29 @@ class Moderation(commands.Cog):
     async def ban(self, ctx, member:discord.Member, reason:str="No reason provided"):
         # Allows the bot to think (to bypass timeouts), and shows the typing indicator
         await ctx.defer()
-        # Check if the specified user has admin, if so, do not kick them. 
+        # Check if the specified user has admin, if so, do not ban them. 
         if member.guild_permissions.administrator:
-            # allows you to kick bots by passing the if check
+            # allows you to ban bots by passing the if check
             if member.bot:
                 pass
             # Return failure response in an embed
             else:
                 return await ctx.respond(embed=discord.Embed(title="Failure", description="You cannot ban another admin", color=discord.Color.red()))
-            # Try to kick user
+            # Try to ban user
             try:
                 try:
                     # Define banembed embed
-                    banembed = discord.Embed(title="Kick", description=f"You have been banned from {ctx.guild.name}", color=discord.Color.red())
-                    # Send the member the kick embed
-                    await member.send(embed=banembed)
+                    embed = discord.Embed(title="Banned", description=f"You have been banned from {ctx.guild.name}", color=discord.Color.red())
+                    # Send the member the ban embed
+                    await member.send(embed=embed)
                 
-                # If the bot can not send the user a message for whatever reason, we pass and move on to kicking
+                # If the bot can not send the user a message for whatever reason, we pass and move on to banning
                 except:
                     pass
                 # Ban member with reason
                 await member.ban(reason=reason)
                 # Define success embed
-                embed = discord.Embed(title="Sucess", description=f"Sucessfully banned member,'{member.name}'.", color=discord.Color.green())
+                embed = discord.Embed(title="Success", description=f"Sucessfully banned member,'{member.name}'.", color=discord.Color.green())
                 # Send success embed
                 await ctx.respond(embed=embed)
             # Catch errors and asign them to the value of "e"
@@ -93,6 +93,38 @@ class Moderation(commands.Cog):
                 embed = discord.Embed(title="Failure", description=f"Failed to ban, '{member.name}'. Error: `{e}`.", color=discord.Color.red())
                 # Send faiure embed
                 await ctx.respond(embed=embed)
+    # ------------------------ UNBAN COMMAND --------------------------------
+    @bridge.bridge_command(description="Unban a member")
+    @bridge.has_permissions(ban_members=True)
+
+    async def unban(self, ctx, userid, reason:str="No reason provided"):
+        try:
+            user = await self.bot.client.fetch_user(int(userid))
+            guild = ctx.guild
+            await guild.unban(user)
+
+            embed = discord.Embed(
+                title="Success",
+                description=f"Successfully unbanned {user.name}",
+                color = discord.Color.green
+            )
+
+            await ctx.respond(embed)
+
+            try:
+                await user.send(embed=discord.Embed(title="Unbanned", description=f"You have been unbanned from {ctx.guild.name}.") + embed.add_field(name="Reason", description=f"{reason}", color=discord.Color.green))
+            except:
+                pass
+        except Exception as e:
+            embed = discord.Embed(
+                title="Failure",
+                description=f"Failed to unban {user.name} with the following error:"
+            )
+            embed.add_field(
+                name="Error",
+                value=f"{e}"
+            )
+            await ctx.respond(embed=embed)
     # ------------------------ TIMEOUT COMMAND ------------------------------
     @bridge.bridge_command(description="Timeout a user")
     @bridge.has_permissions(moderate_members=True)
