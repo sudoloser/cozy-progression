@@ -9,50 +9,46 @@ class Moderation(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     # ------------------------ Kick COMMAND ------------------------------
-    # Bridge dectorers. Allows us to use both prefix and slash
+    # Bridge decorators. Allows us to use both prefix and slash
     @bridge.bridge_command(description="Kick a member")
     # Permission check
     @bridge.has_permissions(kick_members=True)
     # Defining the 'kick' command
     # ---
-    # ctx give infomation about who sent it, where it was sent, etc
+    # ctx give information about who sent it, where it was sent, etc
     # member:discord.Member requires a member as the first option
     # reason:str="" allows for giving a reason, if no reason provided,
     # it falls back to "No reason provided"
     async def kick(self, ctx, member:discord.Member, reason:str="No reason provided"):
         # Allows the bot to think (to bypass timeouts), and shows the typing indicator
         await ctx.defer()
+
         # Check if the specified user has admin, if so, do not kick them. 
-        if member.guild_permissions.administrator:
-            # allows you to kick bots by passing the if check
-            if member.bot:
-                pass
-            # Return failure response in an embed
-            else:
-                return await ctx.respond(embed=discord.Embed(title="Failure", description="You can't kick another admin", color=discord.Color.red()))
-            # Try to kick user
+        if member.guild_permissions.administrator and not member.bot:
+            return await ctx.respond(embed=discord.Embed(title="Failure", description="You can't kick another admin", color=discord.Color.red()))
+        # Try to kick user
+        try:
             try:
-                try:
-                    # Define kickembed embed
-                    kickembed = discord.Embed(title="Kick", description=f"You have been kicked from {ctx.guild.name}", color=discord.Color.red())
-                    # Send the member the kick embed
-                    await member.send(embed=kickembed)
+                # Define kickembed embed
+                kickembed = discord.Embed(title="Kick", description=f"You have been kicked from {ctx.guild.name}", color=discord.Color.red())
+                # Send the member the kick embed
+                await member.send(embed=kickembed)
                 
-                # If the bot can not send the user a message for whatever reason, we pass and move on to kicking
-                except:
-                    pass
-                # Kick member with reason
-                await member.kick(reason=reason)
-                # Define success embed
-                embed = discord.Embed(title="Sucess", description=f"Sucessfully kicked member,'{member.name}'.", color=discord.Color.green())
-                # Send success embed
-                await ctx.respond(embed=embed)
-            # Catch errors and asign them to the value of "e"
-            except Exception as e:
-                # Define failure embed with error
-                embed = discord.Embed(title="Failure", description=f"Failed to kick, '{member.name}'. Error: `{e}`.", color=discord.Color.red())
-                # Send faiure embed
-                await ctx.respond(embed=embed)
+            # If the bot can not send the user a message for whatever reason, we pass and move on to kicking
+            except:
+                pass
+            # Kick member with reason
+            await member.kick(reason=reason)
+            # Define success embed
+            embed = discord.Embed(title="Success", description=f"Successfully kicked member,'{member.name}'.", color=discord.Color.green())
+            # Send success embed
+            await ctx.respond(embed=embed)
+        # Catch errors and assign them to the value of "e"
+        except Exception as e:
+            # Define failure embed with error
+            embed = discord.Embed(title="Failure", description=f"Failed to kick, '{member.name}'. Error: `{e}`.", color=discord.Color.red())
+            # Send failure embed
+            await ctx.respond(embed=embed)
     # ------------------------ BAN COMMAND ------------------------------
     @bridge.bridge_command(description="Ban a member")
     # Permission check
@@ -62,63 +58,70 @@ class Moderation(commands.Cog):
     async def ban(self, ctx, member:discord.Member, reason:str="No reason provided"):
         # Allows the bot to think (to bypass timeouts), and shows the typing indicator
         await ctx.defer()
+
         # Check if the specified user has admin, if so, do not ban them. 
-        if member.guild_permissions.administrator:
-            # allows you to ban bots by passing the if check
-            if member.bot:
-                pass
+        if member.guild_permissions.administrator and not member.bot:
             # Return failure response in an embed
-            else:
-                return await ctx.respond(embed=discord.Embed(title="Failure", description="You cannot ban another admin", color=discord.Color.red()))
-            # Try to ban user
+            return await ctx.respond(embed=discord.Embed(title="Failure", description="You cannot ban another admin", color=discord.Color.red()))
+        # Try to ban user
+        try:
             try:
-                try:
-                    # Define banembed embed
-                    embed = discord.Embed(title="Banned", description=f"You have been banned from {ctx.guild.name}", color=discord.Color.red())
-                    # Send the member the ban embed
-                    await member.send(embed=embed)
-                
-                # If the bot can not send the user a message for whatever reason, we pass and move on to banning
-                except:
-                    pass
-                # Ban member with reason
-                await member.ban(reason=reason)
-                # Define success embed
-                embed = discord.Embed(title="Success", description=f"Sucessfully banned member,'{member.name}'.", color=discord.Color.green())
-                # Send success embed
-                await ctx.respond(embed=embed)
-            # Catch errors and asign them to the value of "e"
-            except Exception as e:
-                # Define failure embed with error
-                embed = discord.Embed(title="Failure", description=f"Failed to ban, '{member.name}'. Error: `{e}`.", color=discord.Color.red())
-                # Send faiure embed
-                await ctx.respond(embed=embed)
+                # Define ban embed
+                embed = discord.Embed(title="Banned", description=f"You have been banned from {ctx.guild.name}", color=discord.Color.red())
+                # Send the member the ban embed
+                await member.send(embed=embed)
+                    
+            # If the bot can not send the user a message for whatever reason, we pass and move on to banning
+            except:
+                pass
+            # Ban member with reason
+            await member.ban(reason=reason)
+            # Define success embed
+            embed = discord.Embed(title="Success", description=f"Successfully banned member,'{member.name}'.", color=discord.Color.green())
+            # Send success embed
+            await ctx.respond(embed=embed)
+        # Catch errors and assign them to the value of "e"
+        except Exception as e:
+            # Define failure embed with error
+            embed = discord.Embed(title="Failure", description=f"Failed to ban, '{member.name}'. Error: `{e}`.", color=discord.Color.red())
+            # Send failure embed
+            await ctx.respond(embed=embed)
     # ------------------------ UNBAN COMMAND --------------------------------
     @bridge.bridge_command(description="Unban a member")
     @bridge.has_permissions(ban_members=True)
 
     async def unban(self, ctx, userid, reason:str="No reason provided"):
         try:
-            user = await self.bot.client.fetch_user(int(userid))
+            user = await self.bot.fetch_user(int(userid))
             guild = ctx.guild
             await guild.unban(user)
 
             embed = discord.Embed(
                 title="Success",
                 description=f"Successfully unbanned {user.name}",
-                color = discord.Color.green
+                color = discord.Color.green()
             )
 
-            await ctx.respond(embed)
+            await ctx.respond(embed=embed)
 
             try:
-                await user.send(embed=discord.Embed(title="Unbanned", description=f"You have been unbanned from {ctx.guild.name}.") + embed.add_field(name="Reason", description=f"{reason}", color=discord.Color.green))
+                embed = discord.Embed(
+                    title="Unbanned", 
+                    description=f"You have been unbanned from {ctx.guild.name}.",
+                    color=discord.Color.green()
+                )
+                embed.add_field(
+                    name="Reason", 
+                    value=f"{reason}", 
+                )
+                await user.send(embed=embed)
             except:
                 pass
         except Exception as e:
             embed = discord.Embed(
                 title="Failure",
-                description=f"Failed to unban {user.name} with the following error:"
+                description=f"Failed to unban {userid} with the following error:",
+                color=discord.Color.red()
             )
             embed.add_field(
                 name="Error",
@@ -144,7 +147,7 @@ class Moderation(commands.Cog):
         # Try to time out user
         try:
             await member.timeout(duration)
-            embed = discord.Embed(title="Sucess", description=f"Sucessfully timed out {member.mention} for `{hours} Hours`, and `{minutes} Minutes`.", color=discord.Color.green())
+            embed = discord.Embed(title="Success", description=f"Successfully timed out {member.mention} for `{hours} Hours`, and `{minutes} Minutes`.", color=discord.Color.green())
             status = True
         
         # Catch errors
@@ -165,28 +168,42 @@ class Moderation(commands.Cog):
     @bridge.has_permissions(manage_messages=True)
 
     async def purge(self, ctx, amount:int, member:discord.Member=None):
+        embed = discord.Embed(
+            title="Failure",
+            description="Could not delete messages, please check the following error:",
+            color=discord.Color.red()
+        )
         # Check if the user specified another user
         if member!=None:
             # Create a msg list
             msg = []
-            # Check all msgs in the channel the command was ran from
-            async for m in ctx.channel.history():
-                # Break once reached the specified amount
-                if len(msg) == amount:
-                    break
-                # Add msg to the msg list if it matches the specified users ID
-                if m.author.id == member.id:
-                    msg.append(m)
-                    print(f"{member.id}")
+            try:
+                # Check all msgs in the channel the command was ran from
+                async for m in ctx.channel.history():
+                    # Break once reached the specified amount
+                    if len(msg) == amount:
+                        break
+                    # Add msg to the msg list if it matches the specified users ID
+                    if m.author.id == member.id:
+                        msg.append(m)
                 # Delete messages in the msg list
                 await ctx.channel.delete_messages(msg)
-                # Respond and exit function
                 return await ctx.respond(f"{amount} Messages from {member.mention} has been purged.", ephemeral=True)
+            except Exception as e:
+                embed.add_field(
+                    name="Error",
+                    value=f"`{e}`",
+                )
+                embed.add_field(
+                    name="Requested user",
+                    value=f"{member.mention}"
+                )
+                return await ctx.respond(embed=embed, ephemeral=True)
         await ctx.respond("Purging messages...")
         # Add 2 to compensate for the command message, and bot message
         await ctx.channel.purge(limit=amount+2)
         message = await ctx.send(f"Purged {amount} messages.\n-# Deleting in 2 seconds")
-        ctx.delete(message.id)
+        await message.delete()
 # Setup cog
 def setup(bot): 
     # Add cog to the bot

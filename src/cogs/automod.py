@@ -21,7 +21,7 @@ class Automod(commands.Cog):
             # This defines the metadata variable from the servers automod. This will be
             # Triggered when a message is blocked
             metadata = discord.AutoModActionMetadata(custom_message="This message was blocked by anti-spam.")
-            # Create new moderationr rule
+            # Create new moderation rule
             
             # trigger_type=discord.AutoModTriggerType.spam: When a message is sent, it will check for this.
             await ctx.guild.create_auto_moderation_rule(
@@ -35,7 +35,7 @@ class Automod(commands.Cog):
                 # Provides extra configuration options or settings specific to the chosen trigger type.
                 trigger_metadata=discord.AutoModTriggerMetadata(), 
                 # Decides the penalty or action the bot should take when the rule is triggered
-                # discord.AutoModActionType.block_message: Tells discord to block the messsages before theyre sent
+                # discord.AutoModActionType.block_message: Tells discord to block the messages before they're sent
                 # metadata: Points to additionl metadata settings
                 actions=[discord.AutoModAction(discord.AutoModActionType.block_message, metadata)]
                 )
@@ -55,7 +55,7 @@ class Automod(commands.Cog):
                 ] 
                 ), 
                 # Decides the penalty or action the bot should take when the rule is triggered
-                # discord.AutoModActionType.block_message: Tells discord to block the messsages before theyre sent
+                # discord.AutoModActionType.block_message: Tells discord to block the messages before they're sent
                 # metadata: Points to additionl metadata settings
                 actions=[discord.AutoModAction(discord.AutoModActionType.block_message, metadata)]
                 )
@@ -72,7 +72,7 @@ class Automod(commands.Cog):
                     mention_total_limit=7
                 ), 
                 # Decides the penalty or action the bot should take when the rule is triggered
-                # discord.AutoModActionType.block_message: Tells discord to block the messsages before theyre sent
+                # discord.AutoModActionType.block_message: Tells discord to block the messages before they're sent
                 # metadata: Points to additionl metadata settings
                 actions=[discord.AutoModAction(discord.AutoModActionType.block_message, metadata)]
                 )
@@ -93,7 +93,7 @@ class Automod(commands.Cog):
                 # Provides extra configuration options or settings specific to the chosen trigger type.
                 trigger_metadata=discord.AutoModTriggerMetadata(), 
                 # Decides the penalty or action the bot should take when the rule is triggered
-                # discord.AutoModActionType.block_message: Tells discord to block the messsages before theyre sent
+                # discord.AutoModActionType.block_message: Tells discord to block the messages before they're sent
                 # metadata: Points to additionl metadata settings
                 actions=[discord.AutoModAction(discord.AutoModActionType.block_message, metadata)]
                 )
@@ -113,7 +113,7 @@ class Automod(commands.Cog):
                 ] 
                 ), 
                 # Decides the penalty or action the bot should take when the rule is triggered
-                # discord.AutoModActionType.block_message: Tells discord to block the messsages before theyre sent
+                # discord.AutoModActionType.block_message: Tells discord to block the messages before they're sent
                 # metadata: Points to additionl metadata settings
                 actions=[discord.AutoModAction(discord.AutoModActionType.block_message, metadata)]
                 )
@@ -130,11 +130,11 @@ class Automod(commands.Cog):
                     mention_total_limit=7
                 ), 
                 # Decides the penalty or action the bot should take when the rule is triggered
-                # discord.AutoModActionType.block_message: Tells discord to block the messsages before theyre sent
+                # discord.AutoModActionType.block_message: Tells discord to block the messages before they're sent
                 # metadata: Points to additionl metadata settings
                 actions=[discord.AutoModAction(discord.AutoModActionType.block_message, metadata)]
                 )
-                await ctx.respond("Successfully enabled autmod")
+                await ctx.respond("Successfully enabled automod")
             except Exception as e:
                 await ctx.respond(f"Failed to enable automod: `{e}`")
 

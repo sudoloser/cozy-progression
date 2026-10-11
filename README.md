@@ -6,7 +6,7 @@ Small Discord bot for the Cozy Progression Discord server
 
 Run this in the `./src` directory:
 ```bash
-python3 install -r requirements.txt
+pip install -r requirements.txt
 ```
 And then create a `.env` file in the `./src` directory with your Discord Bot Token. It should look something like this:
 ```txt

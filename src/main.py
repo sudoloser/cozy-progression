@@ -200,14 +200,14 @@ async def ping(ctx):
     # ---
     # client.latency calls the gateway and calculates
     # how long it takes for the machine to send and
-    # recieve data
+    # receive data
     # ---
     # .split() removes chars from the specified index, [1:3] extracts index 1 through 3
     # and returns that value to the variable
     latency = (str(client.latency)).split('.')[1][1:3]
 
     # Return the command with f string.
-    # This is the quilivent of the following snipped of code in JS:
+    # This is the equivalent of the following snippet of code in JS:
     # return "Pong! Bot replied in ${latency}";
     await ctx.respond(f"Pong! Bot replied in {latency} ms")
 
@@ -233,7 +233,7 @@ pages = [
         embeds = [
             discord.Embed(
                 title="Moderation",
-                description="**/ban\n/kick\n/timeout\n/purge\n/nick\n/role\n/automod enable**"
+                description="**/ban\n/kick\n/timeout\n/purge\n/nick\n/role\n/automod enable**\n/ticketing"
             )
         ],
     ),
@@ -241,10 +241,18 @@ pages = [
         embeds = [
             discord.Embed(
                 title="Utilities",
-                description="**/changelog\n/mod\n/banner\n/avatar\n/random number\n/random color**"
+                description="**/changelog\n/mod\n/banner\n/avatar\n/random number\n/random color**\n/dice d6\n/dice d20"
             )
         ],
     ),
+    Page(
+        embeds = [
+            discord.Embed(
+                title="Fun",
+                description="**/8ball"
+            )
+        ]
+    )
 ]
 
 @client.bridge_command(description="Information about the bot")
@@ -254,7 +262,7 @@ async def help(ctx):
     # Tries sending the interaction response. This will only work
     # if its a slash command
     try: await paginator.respond(ctx.interaction)
-    # For prefix commands, we send it as a regluar message
+    # For prefix commands, we send it as a regular message
     except: await paginator.send(ctx)
 
 @client.bridge_command(description="Start the ticketing system")

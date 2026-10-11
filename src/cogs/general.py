@@ -23,6 +23,20 @@ class General(commands.Cog):
     async def download(self, ctx):
         embed = discord.Embed(title="Download", description="Search for Cozy Progression directly in your launcher (Prism, CurseForge, GDLauncher), or download the .mrpack manually from [Modrinth](<https://modrinth.com/modpack/cozyprogression>).", color=discord.Color.green())
         await ctx.respond(embed=embed)
+    # ------------- SOURCE COMMAND -----------
+    @bridge.bridge_command(description="Shows the source code of the bot")
+    async def source(self, ctx):
+        source_link = "https://github.com/sudoloser/cozy-progression/tree/discord-bot"
+        github_preview = "https://opengraph.githubassets.com/1/sudoloser/cozy-progression"
+
+        embed = discord.Embed(
+            title="Source code",
+            description=f"💻️ Click [here]({source_link}) for the source code of this bot.",
+            color=discord.Color.white()
+        )
+        embed.set_image(url=github_preview)
+
+        await ctx.respond(embed=embed)
     # ------------- RAM COMMAND --------------
     @bridge.bridge_command(description="Recommended allocated ram")
     async def ram(self, ctx):
