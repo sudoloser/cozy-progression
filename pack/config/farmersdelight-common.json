@@ -1,0 +1,47 @@
+{
+  "#README": "This config file does not support comments. To see them configure it in-game using YACL or Cloth Config (or just use Forge)",
+  "settings": {
+    "enableRopeReeling": true,
+    "canvasSignDarkBackgroundList": [
+      "gray",
+      "purple",
+      "blue",
+      "brown",
+      "green",
+      "red",
+      "black"
+    ]
+  },
+  "farming": {
+    "richSoilBoostChance": 0.2,
+    "enableTomatoVineClimbingTaggedRopes": true,
+    "defaultTomatoVineRope": "farmersdelight:rope"
+  },
+  "crafting": {
+    "enableCookingPotRecipeBook": true,
+    "enableVanillaCropCrates": true,
+    "cuttingBoardFortuneBonus": 0.1
+  },
+  "overrides": {
+    "enableVanillaSoupExtraEffects": true,
+    "enableRabbitStewBuff": true,
+    "enablePumpkinPieSneakToPlace": false,
+    "enableCuttingBoardDispenserBehavior": true,
+    "stack_size": {
+      "enableStackableSoupItems": true,
+      "soupItemList": [
+        "minecraft:mushroom_stew",
+        "minecraft:beetroot_soup",
+        "minecraft:rabbit_stew"
+      ]
+    }
+  },
+  "world": {
+    "generateFDChestLoot": true,
+    "generateVillageCompostHeaps": true,
+    "generateFDCropsOnVillageFarms": true
+  },
+  "debug": {
+    "enableTomatoRopePermanence": true
+  }
+}

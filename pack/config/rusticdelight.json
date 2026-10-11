@@ -1,0 +1,20 @@
+{
+  "squids_drop_calamari": true,
+  "enable_villager_trades": true,
+  "enable_wandering_trader_trades": true,
+  "enable_potions": true,
+  "generate_village_farm_crops": true,
+  "generate_random_loot": true,
+  "enable_cotton": true,
+  "enable_coffee": true,
+  "enable_bell_peppers": true,
+  "enable_potato_slices": true,
+  "enable_fried_foods": true,
+  "enable_cherry_blossom_foods": true,
+  "enable_pancakes": true,
+  "enable_syrup_foods": true,
+  "wild_cotton_chance": 32,
+  "wild_bell_peppers_chance": 15,
+  "wild_coffee_chance": 15,
+  "bell_pepper_block_patch_chance": 16
+}

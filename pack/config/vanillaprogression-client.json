@@ -1,0 +1,17 @@
+{
+  "questHudEnabled": true,
+  "hudPosition": "top_right",
+  "hudScale": 1.0,
+  "questScreenScale": 1.0,
+  "hudOpacity": 0.9,
+  "hudCompact": false,
+  "hudShowIcons": true,
+  "hudMaxQuests": 1,
+  "rememberFilters": true,
+  "keybindOpensScreen": true,
+  "selectedChapter": "wooden",
+  "selectedCategory": "all",
+  "searchQuery": "",
+  "incompleteOnly": true,
+  "activeOnly": false
+}

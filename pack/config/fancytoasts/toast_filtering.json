@@ -1,0 +1,17 @@
+{
+  "fancyAdvancementToastsEnabled": true,
+  "fancyQuestToastsEnabled": true,
+  "toastsToIgnore": [],
+  "typesToIgnore": {
+    "TASK": false,
+    "GOAL": false,
+    "CHALLENGE": false
+  },
+  "questTypesToIgnore": {
+    "TASK": false,
+    "QUEST": false,
+    "CHAPTER": false,
+    "BOOK": false
+  },
+  "version": 1
+}
