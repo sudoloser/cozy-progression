@@ -134,7 +134,7 @@ class Utils(commands.Cog):
             )
             await ctx.respond(embed=embed, ephemeral=True)
         else:
-            await ctx.respond("You either:\n- Used the command on its own\nor\n- The user does not have an banner set")
+            await ctx.respond("You either:\n- Used the command on its own\nor\n- The user does not have a banner set")
     # ---------------------- AVATAR COMMAND -------------------------
     @bridge.bridge_command(description="Shows a user's avatar")
     async def avatar(self, ctx, user: discord.Member = None):
