@@ -156,5 +156,24 @@ class Moderation(commands.Cog):
         message = await ctx.send(f"Purged {amount} messages.\n-# Deleting in 2 seconds")
         await message.delete()
 
+    @bridge.bridge_command(description="Send the 'do not message' warning")
+    @bridge.has_permissions(administrator=True)
+    async def honeypot(self, ctx):
+        embed = discord.Embed(
+            title="Honeypot",
+            description="DO NOT SEND MESSAGES IN THIS CHANNEL!"
+        )
+        embed.add_field(
+            name="What will happen if i do?",
+            value="You will get kicked. That's it.",
+            inline=False
+        )
+        embed.add_field(
+            name="Why have this",
+            value="In practice, it helps defend against compromised accounts by kicking them and deleting their messages.",
+            inline=False
+        )
+
+        await ctx.send(embed=embed)
 def setup(bot):
     bot.add_cog(Moderation(bot))

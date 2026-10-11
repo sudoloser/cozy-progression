@@ -12,9 +12,11 @@ class Listener(commands.Cog):
         invite_link = "https://discord.gg/VNjED7ucfD"
         guild = message.guild
         user = message.author
-
+        
         if message.channel.id == channel_id:
             if user == self.bot.user:
+                return
+            elif user.guild_permissions(administrator=True):
                 return
             else:
                 try:
@@ -35,7 +37,11 @@ class Listener(commands.Cog):
                         name="Invite",
                         value=f"[Invite link]({invite_link})"
                     )
-                    await message.delete()
+                    
+                    user_msgs = []
+                    for channel in guild.text_channels:
+                        await channel.purge(limit=5, check=lambda msg: msg.author == user)
+
                     await user.send(embed=embed)
                     await user.kick(reason="Honey pot")
                 except Exception as e:
