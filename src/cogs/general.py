@@ -29,7 +29,7 @@ class General(commands.Cog):
         embed = discord.Embed(
             title="Source code",
             description=f"💻️ Click [here]({source_link}) for the source code of this bot.",
-            color=discord.Color.white()
+            color=0xFFFFFF
         )
         embed.set_image(url=github_preview)
 
