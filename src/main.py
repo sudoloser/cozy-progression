@@ -75,11 +75,22 @@ class Ticket(discord.ui.View):
         ]
     )
     async def ticketCallback(self, select, interaction):
+        maintainers_roleid = 1558926793333940344
+        role = interaction.guild.get_role(1558459120124694691)
+
         overwrites = {
             interaction.guild.default_role: discord.PermissionOverwrite(view_channel=False),
             interaction.user: discord.PermissionOverwrite(view_channel=True, send_messages=True, embed_links=True),
-            interaction.guild.me: discord.PermissionOverwrite(view_channel=True, send_messages=True, read_message_history=True)
+            interaction.guild.me: discord.PermissionOverwrite(view_channel=True, send_messages=True, read_message_history=True),
+            
+            role: discord.PermissionOverwrite(
+                role,
+                view_channel=True,
+                send_messages=True,
+                embed_links=True
+            )
         }
+
         # Channel ends up like "ticket-x.v.c."
         channel = await interaction.guild.create_text_channel(f"ticket-{interaction.user.name}", overwrites=overwrites, reason=f"Ticket for {interaction.user.name}")
         await interaction.response.send_message(f"Ticket opened at {channel.mention}", ephemeral=True)
@@ -105,9 +116,9 @@ class Ticket(discord.ui.View):
             )
             embed.add_field(
                 name="What we need from you:",
-                value="1. The mod's name and modrinth link\n2. Why it would fit in with either cozy or progression"
+                value="1. The mod's name, Modrinth **and** CurseForge link.\n>If the mod is not on CurseForge, or if the mod is only on CurseForge, it will be added as a **recommended mod**. Recommended mods are **NOT** included in the modpack, but are mentioned in the description as recommended.\n2. Why it would fit in with either cozy or progression"
             )
-            await channel.send(embed=embed, view=CloseTicket())
+            await channel.send(f"{interaction.user.mention}, <@&{maintainers_roleid}>", embed=embed, view=CloseTicket())
         elif select.values[0]=="Suggestion":
             embed = discord.Embed(
                 title="Server suggestion",
@@ -181,7 +192,7 @@ pages = [
         embeds = [
             discord.Embed(
                 title="Moderation",
-                description="**/ban\n/kick\n/timeout\n/purge\n/nick\n/role\n/automod enable**\n/ticketing\n/honeypot"
+                description="**/ban\n/kick\n/timeout\n/purge\n/nick\n/role\n/automod enable\n/ticketing\n/honeypot**"
             )
         ],
     ),
@@ -189,7 +200,7 @@ pages = [
         embeds = [
             discord.Embed(
                 title="Utilities",
-                description="**/changelog\n/mod\n/banner\n/avatar\n/random number\n/random color**\n/dice d6\n/dice d20"
+                description="**/changelog\n/mod\n/banner\n/avatar\n/random number\n/random color\n/dice d6\n/dice d20**"
             )
         ],
     ),
@@ -197,7 +208,7 @@ pages = [
         embeds = [
             discord.Embed(
                 title="Fun",
-                description="**/8ball"
+                description="**/8ball**"
             )
         ]
     )
