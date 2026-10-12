@@ -45,10 +45,25 @@ class Utils(commands.Cog):
             async with aiohttp.ClientSession() as session:
                 async with session.get(base_url) as response:
                     latest = await response.text()
-                async with session.get(latest) as response:
+                    urls = []
+                    for line in latest:
+                        urls.append(line)
+                    changelog = urls[0]
+                    screenshot = urls[1]
+                async with session.get(changelog) as response:
                     content = await response.text()
 
-            await ctx.respond(content)
+            
+            embed = discord.Embed(
+                title="Changelog",
+                description=content
+            )
+            embed.set_image(
+                url=screenshot
+            )
+
+            await ctx.respond(embed=embed)
+
         except Exception as e:
             embed = await error_embed(ctx, e)
             await ctx.respond(embed=embed)
