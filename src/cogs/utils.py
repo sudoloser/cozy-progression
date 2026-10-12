@@ -7,6 +7,7 @@ import asyncio
 
 from .functions import error_handling
 from .functions.error_handling import error_embed
+from .functions.color_from_image import colorFromImage
 
 from discord.ext import bridge, commands
 
@@ -45,18 +46,19 @@ class Utils(commands.Cog):
             async with aiohttp.ClientSession() as session:
                 async with session.get(base_url) as response:
                     latest = await response.text()
-                    urls = []
-                    for line in latest:
-                        urls.append(line)
+                    urls = [line.strip() for line in latest.splitlines() if line.strip]
                     changelog = urls[0]
                     screenshot = urls[1]
                 async with session.get(changelog) as response:
                     content = await response.text()
 
-            
+            color = await colorFromImage(screenshot, "hex")
+            colorint = int(color, 16)
+
             embed = discord.Embed(
                 title="Changelog",
-                description=content
+                description=content,
+                color=colorint
             )
             embed.set_image(
                 url=screenshot
@@ -65,7 +67,7 @@ class Utils(commands.Cog):
             await ctx.respond(embed=embed)
 
         except Exception as e:
-            embed = await error_embed(ctx, e)
+            embed = await error_embed(e)
             await ctx.respond(embed=embed)
 
     @bridge.bridge_command(description="Check if a mod is in the modlist")

@@ -3,6 +3,9 @@ import discord
 from .functions import error_handling
 from .functions.error_handling import error_embed
 
+from .functions.color_from_image import colorFromImage
+
+
 from discord.ext import bridge, commands
 
 class tests(commands.Cog):
@@ -30,5 +33,45 @@ class tests(commands.Cog):
             )
 
             await ctx.respond(embed=embed)
+    
+    @test.command(description="Test extracting primary image from url")
+    async def colorfromimage(self, ctx, image_url: str = "https://fastly.picsum.photos/id/651/536/354.jpg?hmac=uH5tft1mZIFbtwn8QSl34B-BJIAJqENj0Oy6TNodX2c", format: str = "rgb"):
+        try:
+            await ctx.defer()
+            
+            if format == "rgb":
+                color = await colorFromImage(image_url, "rgb")
+            elif format == "hls":
+                color = await colorFromImage(image_url, "hls")
+            elif format == "hsv":
+                color = await colorFromImage(image_url, "hsv")
+            elif format == "hex":
+                color = await colorFromImage(image_url, "hex")
+
+            if format == "hex":
+                colorint = int(color, 16)
+                embed = discord.Embed(
+                    title="Color Test",
+                    description="Passed the color test",
+                    color=colorint
+                )
+            else:
+                embed = discord.Embed(
+                    title="Color Test",
+                    description="Passed the color test",
+                )
+            embed.set_image (
+                url=image_url
+            )
+            embed.add_field(
+                name="Color",
+                value=color
+            )
+
+            await ctx.respond(embed=embed)
+        except Exception as e:
+            embed = await error_embed(e)
+            await ctx.respond(embed=embed)
+
 def setup(bot):
     bot.add_cog(tests(bot))

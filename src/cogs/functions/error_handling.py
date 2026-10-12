@@ -1,6 +1,6 @@
 import discord
 
-async def error_embed(ctx, error):
+async def error_embed(error):
     embed = discord.Embed(
         title="Failure",
         description="Failure to complete action due to the following:",
