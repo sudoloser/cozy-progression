@@ -178,7 +178,7 @@ pages = [
         embeds = [
             discord.Embed(
                 title="General",
-                description="**/links\n/source\n/download\n/ram\n/crash**"
+                description="**/links\n/source\n/download\n/ram\n/crash\n/nuke [channel]**"
             )
         ],
     ),
