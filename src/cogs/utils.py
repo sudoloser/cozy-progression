@@ -5,17 +5,41 @@ import math
 import random
 import asyncio
 
+from .functions import error_handling
+from .functions.error_handling import error_embed
+
 from discord.ext import bridge, commands
 
 class Utils(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @bridge.bridge_command(description="Shows information about the bot")
+    async def info(self, ctx):
+        base_url="https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/info/information.md"
+
+        try:
+
+            async with aiohttp.ClientSession() as session:
+                async with session.get(base_url) as response:
+                    content = await response.text()
+            embed = discord.Embed(
+                title="Info",
+                description=content,
+                color=0x107AB0
+                )
+            await ctx.respond(embed=embed)
+        except Exception as e:
+            if len(e) > 1024:
+                e = e[:1021] + "..."
+            embed = await error_embed(ctx, e)
+            await ctx.respond(embed=embed)
+
     @bridge.bridge_command(description="Check latest changelog")
     async def changelog(self, ctx):
         await ctx.defer()
         # latest.md contains a link to the actual changelog file, so this is a double fetch
-        base_url = "https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/CHANGELOG/latest.md"
+        base_url = "https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/info/CHANGELOG/latest.md"
 
         try:
             async with aiohttp.ClientSession() as session:
@@ -26,15 +50,16 @@ class Utils(commands.Cog):
 
             await ctx.respond(content)
         except Exception as e:
-            await ctx.respond(f"Failed to get latest changelog.\nGithub may be down\nError: `{e}`")
+            embed = await error_embed(ctx, e)
+            await ctx.respond(embed=embed)
 
     @bridge.bridge_command(description="Check if a mod is in the modlist")
     async def mod(self, ctx, *, mod: str = ""):
         await ctx.defer()
 
         mod = mod.strip()
-        modlistlink = "https://github.com/sudoloser/cozy-progression/blob/main/modlist.md"
-        base_url = "https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/modlist.txt"
+        modlistlink = "https://github.com/sudoloser/cozy-progression/blob/main/info/modlist.md"
+        base_url = "https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/info/modlist.txt"
 
         if not mod:
             await ctx.respond("Please provide a mod name to search for, or use `!mod list` to get a link for the list.")
@@ -106,8 +131,8 @@ class Utils(commands.Cog):
                 await ctx.respond(embed=success)
 
         except Exception as e:
-            failure = discord.Embed(title="failure", description=f"Failure to add role `{role}` to {member.mention} with the following error:\n`{e}`", color=discord.Color.red())
-            return await ctx.respond(embed=failure)
+            embed = await error_embed(ctx, e)
+            return await ctx.respond(embed=embed)
 
     @bridge.bridge_command(description="Shows a user's banner")
     async def banner(self, ctx, user: discord.Member = None):

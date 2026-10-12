@@ -1,6 +1,9 @@
 import discord
 from datetime import timedelta
 
+from .functions import error_handling
+from .functions.error_handling import error_embed
+
 from discord.ext import bridge, commands
 
 class Moderation(commands.Cog):
@@ -26,7 +29,7 @@ class Moderation(commands.Cog):
             embed = discord.Embed(title="Success", description=f"Successfully kicked member,'{member.name}'.", color=discord.Color.green())
             await ctx.respond(embed=embed)
         except Exception as e:
-            embed = discord.Embed(title="Failure", description=f"Failed to kick, '{member.name}'. Error: `{e}`.", color=discord.Color.red())
+            embed = await error_embed(ctx, e)
             await ctx.respond(embed=embed)
 
     @bridge.bridge_command(description="Ban a member")
@@ -48,7 +51,7 @@ class Moderation(commands.Cog):
             embed = discord.Embed(title="Success", description=f"Successfully banned member,'{member.name}'.", color=discord.Color.green())
             await ctx.respond(embed=embed)
         except Exception as e:
-            embed = discord.Embed(title="Failure", description=f"Failed to ban, '{member.name}'. Error: `{e}`.", color=discord.Color.red())
+            embed = await error_embed(ctx, e)
             await ctx.respond(embed=embed)
 
     @bridge.bridge_command(description="Unban a member")
@@ -82,15 +85,7 @@ class Moderation(commands.Cog):
             except:
                 pass
         except Exception as e:
-            embed = discord.Embed(
-                title="Failure",
-                description=f"Failed to unban {userid} with the following error:",
-                color=discord.Color.red()
-            )
-            embed.add_field(
-                name="Error",
-                value=f"{e}"
-            )
+            embed = await error_embed(ctx, e)
             await ctx.respond(embed=embed)
 
     @bridge.bridge_command(description="Timeout a user")
@@ -110,7 +105,7 @@ class Moderation(commands.Cog):
             status = True
 
         except Exception as e:
-            embed = discord.Embed(title="Failure", description=f"Could not timeout user {member.mention} because of the following error: `{e}`", color=discord.Color.red())
+            embed = await error_embed(ctx, e)
             pass
         await ctx.respond(embed=embed)
         embed2 = discord.Embed(title="Timed out", description=f"You have been timed out for `{hours} Hours`, and `{minutes} Minutes` in {ctx.guild.name}", color=discord.Color.red())
@@ -125,11 +120,6 @@ class Moderation(commands.Cog):
     @bridge.has_permissions(manage_messages=True)
 
     async def purge(self, ctx, amount:int, member:discord.Member=None):
-        embed = discord.Embed(
-            title="Failure",
-            description="Could not delete messages, please check the following error:",
-            color=discord.Color.red()
-        )
         if member!=None:
             msg = []
             try:
@@ -141,10 +131,7 @@ class Moderation(commands.Cog):
                 await ctx.channel.delete_messages(msg)
                 return await ctx.respond(f"{amount} Messages from {member.mention} has been purged.", ephemeral=True)
             except Exception as e:
-                embed.add_field(
-                    name="Error",
-                    value=f"`{e}`",
-                )
+                embed = await error_embed(ctx, e)
                 embed.add_field(
                     name="Requested user",
                     value=f"{member.mention}"

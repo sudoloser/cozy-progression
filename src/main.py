@@ -6,6 +6,10 @@ import aiohttp
 import os
 from discord.ext.pages import Paginator, Page
 
+from .cogs import functions
+from .cogs.functions import error_handling
+from .cogs.function.error_handling import error_embed
+
 from discord.ext import bridge, commands
 from dotenv import load_dotenv
 
@@ -32,18 +36,9 @@ async def on_application_command_error(ctx:discord.ApplicationContext, error:dis
     elif isinstance(error, commands.NSFWChannelRequired):
         await ctx.respond("This command can only be used in an NSFW channel.")
     else:
-       embed = discord.Embed(
-        title="Failure",
-        description="This action could not be completed with the following error:",
-        color=discord.Color.red
-       )
+        embed = await error_embed(ctx, e)
 
-       embed.add_field(
-        name="Error",
-        value=f"`{error}`"
-       )
-
-       await ctx.respond(embed=embed)
+        await ctx.respond(embed=embed)
 
 client.persistent_views_added = False
 
