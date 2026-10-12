@@ -1,1 +1,2 @@
-https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/CHANGELOG/v0.0.2-beta.md
+https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/CHANGELOG/v1.0.0.md
+https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/CHANGELOG/v1.0.0.webp
