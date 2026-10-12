@@ -210,7 +210,7 @@ hash = "465e78d66061e68766e0450b51d7aacf01a156ae4ac34471e8ef88db6fce53f9"
 
 [[files]]
 file = "config/fancymenu/customization/title_screen_layout.txt"
-hash = "e8a5266d9906e4df1e8ae50074129f5886e26bcc29f60ff725d27c26d2d9ff6d"
+hash = "3c60a9aaa8b423271544073536732fa14c7a2f922c3bad33b67cab6714647148"
 
 [[files]]
 file = "config/fancymenu/customization/title_screen_popup_layout.txt"
@@ -218,7 +218,7 @@ hash = "4ac0a4567ea9e373d1d16d08e2ca87dd94d23f04a020b54f1c5f120d2d57fe2c"
 
 [[files]]
 file = "config/fancymenu/layout_editor/widgets/element_layer_control.lewidget"
-hash = "91f2dd91acdd89dee58be3bf1d30895d5f73078076800bb3f53e073ed6d1ce49"
+hash = "d6317ce7ecaaf731f555f32018ce436c2741c52dcc3f8dbc41248c4e91f32f69"
 
 [[files]]
 file = "config/fancymenu/legacy_checklist.txt"
@@ -1248,6 +1248,11 @@ metafile = true
 [[files]]
 file = "servers.dat"
 hash = "148a9da35e2ce93a30f97036c03fb11c183e45ad0f88b543157d5dae72000dea"
+
+[[files]]
+file = "shaderpacks/light-ray.pw.toml"
+hash = "a9a91845a7dd75c04277c48f01b901d8ad34a04d90e180c33a6047c57dc3443e"
+metafile = true
 
 [[files]]
 file = "shaderpacks/solas-shader.pw.toml"

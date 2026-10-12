@@ -1,0 +1,13 @@
+name = "LIGHT Ray Shaders"
+filename = "LightRay-1.9.0b.zip"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "f21b014a1123b3a0687180e6927a5d555b4d36dc"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8770068
+project-id = 1674972
