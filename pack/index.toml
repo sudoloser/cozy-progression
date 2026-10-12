@@ -909,11 +909,6 @@ hash = "afd897640aea4638ea888f34ff7bba3a39db7d0e711cf2e18e38ca81fb7d34ab"
 metafile = true
 
 [[files]]
-file = "mods/ferritecore-fabric.pw.toml"
-hash = "9ca046d9f6700d5af540f3d557eb356d5c8c5bc1007e6fe957168f7d4638c3c4"
-metafile = true
-
-[[files]]
 file = "mods/first-person-model.pw.toml"
 hash = "51fddb6f31122ed9f89b53a9b8bf8a80dc40bfa3031b3ca48620069cb9dec56b"
 metafile = true
@@ -1124,11 +1119,6 @@ hash = "60862c8effa2766f1d834a5baab86144a1893dd0466379c8acb0f49e8fb69c40"
 metafile = true
 
 [[files]]
-file = "mods/sit-fabric.pw.toml"
-hash = "81ddf98b2e3e5dc391fe2b05ac7c6881cbcb0ddc881a3602e62a6bbee88cc947"
-metafile = true
-
-[[files]]
 file = "mods/skyboxify.pw.toml"
 hash = "17d80725233635e3755cd768489789be6399cc856911b6bec746b040d49081a0"
 metafile = true
@@ -1166,11 +1156,6 @@ metafile = true
 [[files]]
 file = "mods/terralith.pw.toml"
 hash = "55dee8768d9bd0b215e27c94a1e2b5182d6206bfcc463e20476c804c8925df48"
-metafile = true
-
-[[files]]
-file = "mods/text-placeholder-api.pw.toml"
-hash = "6498964aef3c1cb63466bf680d6e52b134c1288a33dc6597f990892b60a2b005"
 metafile = true
 
 [[files]]
@@ -1263,11 +1248,6 @@ metafile = true
 [[files]]
 file = "servers.dat"
 hash = "148a9da35e2ce93a30f97036c03fb11c183e45ad0f88b543157d5dae72000dea"
-
-[[files]]
-file = "shaderpacks/light-shaders.pw.toml"
-hash = "1f3fb56c69f4b956f6692099750fb6b039638f432f470f1ae0880cda9e1aeac8"
-metafile = true
 
 [[files]]
 file = "shaderpacks/solas-shader.pw.toml"
