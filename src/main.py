@@ -6,9 +6,9 @@ import aiohttp
 import os
 from discord.ext.pages import Paginator, Page
 
-from .cogs import functions
-from .cogs.functions import error_handling
-from .cogs.function.error_handling import error_embed
+from cogs import functions
+from cogs.functions import error_handling
+from cogs.functions.error_handling import error_embed
 
 from discord.ext import bridge, commands
 from dotenv import load_dotenv

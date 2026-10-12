@@ -143,8 +143,27 @@ class Moderation(commands.Cog):
         message = await ctx.send(f"Purged {amount} messages.\n-# Deleting in 2 seconds")
         await message.delete()
 
+    @bridge.bridge_command(description="Nukes a channel")
+    @bridge.has_permissions(manage_channels=True)
+    
+    async def nuke(self, ctx, channel: discord.TextChannel = None):
+        if channel == None:
+            await ctx.respond("Please specifiy a channel to nuke.")
+        else:
+            try:
+                await ctx.defer()
+                await ctx.send("Deleting channel...")
+
+                cloned_channel = await channel.clone(name=f"{channel.name}")
+                await channel.delete()
+
+                await cloned_channel.send(f"Successfully nuked channel {ctx.author.mention}")
+            except Exception as e:
+                embed = await error_embed(ctx, e)
+                await ctx.respond(embed=embed)
     @bridge.bridge_command(description="Send the 'do not message' warning")
     @bridge.has_permissions(administrator=True)
+    
     async def honeypot(self, ctx):
         embed = discord.Embed(
             title="Honeypot",
@@ -162,5 +181,7 @@ class Moderation(commands.Cog):
             inline=False
         )
         await ctx.send(embed=embed)
+
+
 def setup(bot):
     bot.add_cog(Moderation(bot))
