@@ -4,5 +4,5 @@
 # Loader information
 - **Loader:** Fabric
 - **Loader Version:** 0.19.5
-ss
-[Mod list]()
+
+[Mod list](https://github.com/sudoloser/cozy-progression/blob/main/info/modlist.md)
