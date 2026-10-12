@@ -1,4 +1,5 @@
 py-cord-dev
 python-dotenv
 audioop-lts
-pylette
+pillow
+aiohttp
