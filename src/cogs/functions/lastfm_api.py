@@ -36,34 +36,41 @@ def fmapi_set_username(user_id, username, discord_username=""):
     return "success"
 
 
-apiKey = os.getenv("LASTFM_API_KEY")
-
 async def lastFmApi(username: str = None, command: str = None):
-    apiUrl = f"https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user={username}&api_key={apiKey}&format=json&limit=1"
     if not username:
         raise ValueError("Please provide a username when calling this function.")
-    elif not command:
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(apiUrl) as response:
-                    response = await response.json()
+    apiKey = os.getenv("LASTFM_API_KEY")
+    if not apiKey:
+        raise ValueError("LASTFM_API_KEY is missing. Add it to .env and restart the bot.")
+    apiUrl = f"https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user={username}&api_key={apiKey}&format=json&limit=1"
+    if not command:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(apiUrl) as response:
+                data = await response.json()
+                if response.status != 200 or "recenttracks" not in data:
+                    raise RuntimeError(f"LastFM API error: {data.get('message', data)}")
 
-                    recenttracks = response["recenttracks"]
-                    
-                    track = recenttracks["track"]
-                    object1 = track[0]
+                tracks = data["recenttracks"].get("track", [])
+                if isinstance(tracks, dict):
+                    tracks = [tracks]
+                if not tracks:
+                    raise ValueError(f"No recent tracks found for user '{username}'.")
 
+                object1 = tracks[0]
+
+                try:
                     artist = object1["artist"]["#text"]
                     trackName = object1["name"]
-
                     image = object1["image"][1]["#text"]
-                    
-                    try:
-                        nowPlaying = object1["@attr"]["nowplaying"]
-                    except:
-                        nowPlaying = "false"
+                except (KeyError, IndexError, TypeError) as e:
+                    raise ValueError(f"Unexpected LastFM response format: {e}")
 
-                    return artist, trackName, image, nowPlaying
+                if not image:
+                    raise ValueError("No artwork found for the latest track.")
+                
+                try:
+                    nowPlaying = object1["@attr"]["nowplaying"]
+                except:
+                    nowPlaying = "false"
 
-        except Exception:
-            raise
+                return artist, trackName, image, nowPlaying
