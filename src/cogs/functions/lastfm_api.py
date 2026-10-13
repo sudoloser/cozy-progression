@@ -15,6 +15,7 @@ async def lastFmApi(username: str = None, command: str = None):
                     response = await response.json()
 
                     recenttracks = response["recenttracks"]
+                    
                     track = recenttracks["track"]
                     object1 = track[0]
 
@@ -32,4 +33,5 @@ async def lastFmApi(username: str = None, command: str = None):
                     return artist, trackName, image, nowPlaying
 
         except Exception as e:
-            raise e
+            artist, trackName, image, nowPlaying = None
+            return artist, trackName, image, nowPlaying, e

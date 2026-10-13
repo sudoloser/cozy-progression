@@ -83,7 +83,7 @@ class dev(commands.Cog):
             await ctx.repsond(embed=embed)
         else:
             try:
-                artist, trackName, image, nowPlaying = await lastFmApi("exposedsigma")
+                artist, trackName, image, nowPlaying, e = await lastFmApi("exposedsigma")
                 
                 color = await colorFromImage(image, "hex")
                 color = int(color, 16)
