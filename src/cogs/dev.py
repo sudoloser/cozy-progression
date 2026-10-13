@@ -5,7 +5,7 @@ from .functions.error_handling import error_embed
 
 from .functions.color_from_image import colorFromImage
 
-from .functions.lastfm_api import lastFmApi
+from .functions.lastfm_api import lastFmApi, fmapi_get_username, fmapi_set_username
 
 from .functions.database_helper import database_helper
 
@@ -89,15 +89,13 @@ class dev(commands.Cog):
 
         user_body = None
         try: 
-            users = db_instance.getByQuery({"user_id": user.id})
-            if users:
-                user_body = users[0]
+            username_db = fmapi_get_username(user.id)
         except:
-            pass
+            username_db = None
 
         if subcommand == None:
-            if user_body and username == None:
-                username = user_body["lastfm"]["username"]
+            if username_db and username == None:
+                username = username_db
             if username == None:
                 e = "Please provide a username, or set one by using !test lastfm [username] set"
                 embed = await error_embed(e)
@@ -139,27 +137,8 @@ class dev(commands.Cog):
                 embed = await error_embed(e)
                 await ctx.respond(embed=embed)
             else:
-                if user_body:
-                    if "lastfm" not in user_body:
-                        user_body["lastfm"] = {}
-
-                    user_body["lastfm"]["username"] = username
-
-                    db_instance.update({"user_id": user.id}, user_body)
-                    await ctx.respond("Set username successfully!")
-                else:
-                    response = await database_helper.db_create_user(self, user.id)
-                    if isinstance(response, discord.Embed):
-                        return await ctx.respond(embed=response)
-                    elif response == "success":
-                        print(user.id)
-                        users = db_instance.getByQuery({"user_id": user.id})
-                        if users:
-                            user_body = users[0]
-                        user_body["lastfm"]["username"] = username
-
-                        db_instance.update({"user_id": user.id}, user_body)
-                        await ctx.respond("Set username successfully!")
+                fmapi_set_username(user.id, username, user.name)
+                await ctx.respond("Set username successfully!")
 
 
 def setup(bot):

@@ -1,6 +1,40 @@
 import aiohttp
 import os
 
+from pysondb import db
+
+from .database_helper import db_create_user_record
+
+db_instance = db.getDb("database.json")
+
+
+def fmapi_get_username(user_id):
+    try:
+        users = db_instance.getByQuery({"user_id": user_id})
+        if users:
+            return users[0].get("lastfm", {}).get("username") or None
+    except:
+        pass
+    return None
+
+
+def fmapi_set_username(user_id, username, discord_username=""):
+    users = db_instance.getByQuery({"user_id": user_id})
+    if users:
+        user_body = users[0]
+        if "lastfm" not in user_body:
+            user_body["lastfm"] = {}
+        user_body["lastfm"]["username"] = username
+        db_instance.update({"user_id": user_id}, user_body)
+    else:
+        db_create_user_record(user_id, discord_username)
+        users = db_instance.getByQuery({"user_id": user_id})
+        if users:
+            user_body = users[0]
+            user_body["lastfm"]["username"] = username
+            db_instance.update({"user_id": user_id}, user_body)
+    return "success"
+
 
 apiKey = os.getenv("LASTFM_API_KEY")
 
