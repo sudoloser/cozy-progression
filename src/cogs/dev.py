@@ -96,7 +96,6 @@ class dev(commands.Cog):
             pass
 
         if subcommand == None:
-            username = subcommand
             if user_body and username == None:
                 username = user_body["lastfm"]["username"]
             if username == None:
