@@ -5,10 +5,11 @@ from .functions.error_handling import error_embed
 
 from .functions.color_from_image import colorFromImage
 
+from .functions.lastfm_api import lastFmApi
 
 from discord.ext import bridge, commands
 
-class tests(commands.Cog):
+class dev(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -73,5 +74,44 @@ class tests(commands.Cog):
             embed = await error_embed(e)
             await ctx.respond(embed=embed)
 
+    @test.command(description="Test LastFM api function")
+    async def lastfm(self, ctx, username: str = None):
+        await ctx.defer()
+        if not username:
+            e = "Please provide a username"
+            embed = await error_embed(e)
+            await ctx.repsond(embed=embed)
+        else:
+            try:
+                artist, trackName, image, nowPlaying = await lastFmApi("exposedsigma")
+                
+                color = await colorFromImage(image, "hex")
+                color = int(color, 16)
+
+                embed = discord.Embed(
+                    title="Lastfm",
+                    color=color
+                )
+                embed.add_field(
+                    name="Track",
+                    value=trackName
+                )
+                embed.add_field(
+                    name="Artist",
+                    value=artist
+                )
+                embed.set_image(
+                    url=image
+                )
+                if nowPlaying == "true":
+                    embed.set_footer(
+                        text="Now Playing"
+                    )
+                await ctx.respond(embed=embed)
+
+            except Exception as e:
+                embed = await error_embed(e)
+                await ctx.respond(embed=embed)
+
 def setup(bot):
-    bot.add_cog(tests(bot))
+    bot.add_cog(dev(bot))

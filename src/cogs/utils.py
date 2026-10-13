@@ -187,6 +187,7 @@ class Utils(commands.Cog):
         else:
             await ctx.respond("You either:\n- Used the command on its own\nor\n- The user does not have an avatar set")
 
+    @bridge.bridge_comman    
     @discord.message_command()
     async def getMessageId(self, ctx, message:discord.Message):
         await ctx.respond(f"{message.id}", ephemeral=True)
