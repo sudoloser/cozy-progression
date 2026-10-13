@@ -5,3 +5,5 @@ src/cogs/__pycache__
 pack/Cozy Progression.zip
 .gitignore
 pack/pack.mrpack
+src/database.json
+database.json

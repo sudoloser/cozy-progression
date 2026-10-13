@@ -1,6 +1,6 @@
 import discord
 
-async def error_embed(error):
+async def error_embed(error, cog: str = None):
     embed = discord.Embed(
         title="Failure",
         description="Failure to complete action due to the following:",
@@ -10,5 +10,9 @@ async def error_embed(error):
         name="Error",
         value=f"`{error}`"
     )
-
+    if cog != None:
+        embed.add_field(
+            name="Ran from Cog",
+            value=f"`{cog}`"
+        )
     return embed

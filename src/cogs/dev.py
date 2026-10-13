@@ -7,7 +7,13 @@ from .functions.color_from_image import colorFromImage
 
 from .functions.lastfm_api import lastFmApi
 
+from .functions.database_helper import database_helper
+
 from discord.ext import bridge, commands
+
+from pysondb import db
+
+db_instance = db.getDb("database.json")
 
 class dev(commands.Cog):
     def __init__(self, bot):
@@ -75,43 +81,87 @@ class dev(commands.Cog):
             await ctx.respond(embed=embed)
 
     @test.command(description="Test LastFM api function")
-    async def lastfm(self, ctx, username: str = None):
+    async def lastfm(self, ctx, username: str = None, subcommand: str = None):
         await ctx.defer()
-        if not username:
-            e = "Please provide a username"
-            embed = await error_embed(e)
-            await ctx.repsond(embed=embed)
-        else:
-            try:
-                artist, trackName, image, nowPlaying, e = await lastFmApi("exposedsigma")
-                
-                color = await colorFromImage(image, "hex")
-                color = int(color, 16)
+        user = ctx.author
 
-                embed = discord.Embed(
-                    title="Lastfm",
-                    color=color
-                )
-                embed.add_field(
-                    name="Track",
-                    value=trackName
-                )
-                embed.add_field(
-                    name="Artist",
-                    value=artist
-                )
-                embed.set_image(
-                    url=image
-                )
-                if nowPlaying == "true":
-                    embed.set_footer(
-                        text="Now Playing"
-                    )
-                await ctx.respond(embed=embed)
+        subcommand = subcommand.lower() if subcommand is not None else None
 
-            except Exception as e:
+        user_body = None
+        try: 
+            users = db_instance.getByQuery({"user_id": user.id})
+            if users:
+                user_body = users[0]
+        except:
+            pass
+
+        if subcommand == None:
+            username = subcommand
+            if user_body and username == None:
+                username = user_body["lastfm"]["username"]
+            if username == None:
+                e = "Please provide a username, or set one by using !test lastfm [username] set"
                 embed = await error_embed(e)
                 await ctx.respond(embed=embed)
+            else:
+                try:
+                    artist, trackName, image, nowPlaying = await lastFmApi(username)
+                    
+                    color = await colorFromImage(image, "hex")
+                    color = int(color, 16)
+
+                    embed = discord.Embed(
+                        title="Lastfm",
+                        color=color
+                    )
+                    embed.add_field(
+                        name="Track",
+                        value=trackName
+                    )
+                    embed.add_field(
+                        name="Artist",
+                        value=artist
+                    )
+                    embed.set_image(
+                        url=image
+                    )
+                    if nowPlaying == "true":
+                        embed.set_footer(
+                            text="Now Playing"
+                        )
+                    await ctx.respond(embed=embed)
+
+                except Exception as e:
+                    embed = await error_embed(e)
+                    await ctx.respond(embed=embed)      
+        elif subcommand == "set":
+            if username == None:
+                e = "Please provide a username by using !test lastfm [username] set"
+                embed = await error_embed(e)
+                await ctx.respond(embed=embed)
+            else:
+                if user_body:
+                    if "lastfm" not in user_body:
+                        user_body["lastfm"] = {}
+
+                    user_body["lastfm"]["username"] = username
+
+                    db_instance.update({"user_id": user.id}, user_body)
+                    await ctx.respond("Set username successfully!")
+                else:
+                    response = await database_helper.db_create_user(self, user.id)
+                    if isinstance(response, discord.Embed):
+                        return await ctx.respond(embed=response)
+                    elif response == "success":
+                        print(user.id)
+                        users = db_instance.getByQuery({"user_id": user.id})
+                        if users:
+                            user_body = users[0]
+                        user_body["lastfm"]["username"] = username
+
+                        db_instance.update({"user_id": user.id}, user_body)
+                        await ctx.respond("Set username successfully!")
+
 
 def setup(bot):
     bot.add_cog(dev(bot))
