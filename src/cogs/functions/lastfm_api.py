@@ -65,5 +65,5 @@ async def lastFmApi(username: str = None, command: str = None):
 
                     return artist, trackName, image, nowPlaying
 
-        except Exception as e:
-            pass
+        except Exception:
+            raise
