@@ -187,6 +187,67 @@ class Utils(commands.Cog):
         else:
             await ctx.respond("You either:\n- Used the command on its own\nor\n- The user does not have an avatar set")
 
+    
+    @bridge.bridge_command(description="LastFM")
+    async def lastfm(self, ctx, username: str = None, subcommand: str = None):
+        await ctx.defer()
+        user = ctx.author
+
+        subcommand = subcommand.lower() if subcommand is not None else None
+
+        user_body = None
+        try: 
+            username_db = fmapi_get_username(user.id)
+        except:
+            username_db = None
+
+        if subcommand == None:
+            if username_db and username == None:
+                username = username_db
+            if username == None:
+                e = "Please provide a username, or set one by using !lastfm [username] set"
+                embed = await error_embed(e)
+                await ctx.respond(embed=embed)
+            else:
+                try:
+                    artist, trackName, image, nowPlaying = await lastFmApi(username)
+                    
+                    color = await colorFromImage(image, "hex")
+                    color = int(color, 16)
+
+                    embed = discord.Embed(
+                        title="Lastfm",
+                        color=color
+                    )
+                    embed.add_field(
+                        name="Track",
+                        value=trackName
+                    )
+                    embed.add_field(
+                        name="Artist",
+                        value=artist
+                    )
+                    embed.set_image(
+                        url=image
+                    )
+                    if nowPlaying == "true":
+                        embed.set_footer(
+                            text="Now Playing"
+                        )
+                    await ctx.respond(embed=embed)
+
+                except Exception as e:
+                    embed = await error_embed(e)
+                    await ctx.respond(embed=embed)      
+        elif subcommand == "set":
+            if username == None:
+                e = "Please provide a username by using !lastfm [username] set"
+                embed = await error_embed(e)
+                await ctx.respond(embed=embed)
+            else:
+                fmapi_set_username(user.id, username, user.name)
+                await ctx.respond("Set username successfully!")
+    
     @discord.message_command()
     async def getMessageId(self, ctx, message:discord.Message):
         await ctx.respond(f"{message.id}", ephemeral=True)
