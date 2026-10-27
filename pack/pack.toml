@@ -1,6 +1,6 @@
 name = "Cozy Progression"
 author = "sudoloser"
-version = "0.0.3-beta"
+version = "1.1.0"
 pack-format = "packwiz:1.1.0"
 
 [index]
