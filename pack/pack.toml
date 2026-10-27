@@ -1,6 +1,6 @@
 name = "Cozy Progression"
 author = "sudoloser"
-version = "0.0.2-beta"
+version = "0.0.3-beta"
 pack-format = "packwiz:1.1.0"
 
 [index]
@@ -11,6 +11,3 @@ hash = "9a6117dd0f95dfb4e38738fe1845525ed96449bfc3ddfcb4e1d2f219777600eb"
 [versions]
 fabric = "0.19.5"
 minecraft = "26.2"
-
-[options]
-acceptable-game-versions = ["1.20.1"]
