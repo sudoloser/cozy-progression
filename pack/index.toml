@@ -915,7 +915,7 @@ metafile = true
 
 [[files]]
 file = "mods/footprintparticle.pw.toml"
-hash = "5e005109d81c7c4825d9c35b36165e05c5757cd92761eb4689a6aeeae159570d"
+hash = "1408c1028cc8eac37e117b3e686865a6d1ecb5c9915492282b126efee0e50d92"
 metafile = true
 
 [[files]]
@@ -1256,7 +1256,7 @@ hash = "148a9da35e2ce93a30f97036c03fb11c183e45ad0f88b543157d5dae72000dea"
 
 [[files]]
 file = "shaderpacks/light-ray.pw.toml"
-hash = "a9a91845a7dd75c04277c48f01b901d8ad34a04d90e180c33a6047c57dc3443e"
+hash = "29fab3779261cdc32807d0a9c4e50aa707f2c1c1baec21c7ae2f6a6061ebb605"
 metafile = true
 
 [[files]]
