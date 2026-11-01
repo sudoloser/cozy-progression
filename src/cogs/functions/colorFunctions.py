@@ -11,12 +11,12 @@ fallback_image_url = "https://imgs.search.brave.com/DVK3W6IIFXe4rES3j2MidbbG5Ec6
 
 
 async def random():
-    base_url = f"https://random-flat-colors.vercel.app/api/random?count=1"
+    base_url = f"https://random-flat-colors.vercel.app/api/random?count=2"
 
     async with aiohttp.ClientSession() as session:
         async with session.get(base_url) as response:
-            response = response.json()
-    object = response["colors"]
+            data = await response.json()
+    object = data["colors"]
     color = object[0].strip("#")
     color = int(color, 16)
     return color

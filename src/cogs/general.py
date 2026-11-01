@@ -13,16 +13,14 @@ class General(commands.Cog):
     @bridge.bridge_command(description="Shows information about the bot.")
     async def info(self, ctx):
         tos = "https://sdlsr.dpdns.org/cozyprogression/discord-bot/tos"
-        color = "0x" + await color.random()
+        color = await random()
         embed = discord.Embed(
-            tile="Bot Info",
-            description="Discord Bot for the Cozy Progression Modpack",
+            title="Bot Info",
+            description=f"Discord Bot for the Cozy Progression Modpack\n\n[TOS]({tos})",
             color=color
         )
-        embed.set_footer(
-            text=f"[TOS]()"
-        )
 
+        await ctx.respond(embed=embed)
     @bridge.bridge_command(description="Shows information about the pack")
     async def pack(self, ctx):
         base_url="https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/info/information.md"
