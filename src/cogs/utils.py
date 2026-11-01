@@ -187,7 +187,11 @@ class Utils(commands.Cog):
         else:
             await ctx.respond("You either:\n- Used the command on its own\nor\n- The user does not have an avatar set")
 
-    
+    # @bridge.bridge_command(description="Reminds you with a reason")
+    # async def remind(self, ctx, reason: str = None):
+    #     if reason == None:
+    #         await ctx.respond("Please specifiy a reason")
+
     @bridge.bridge_command(description="LastFM")
     async def lastfm(self, ctx, username: str = None, subcommand: str = None):
         await ctx.defer()
