@@ -10,6 +10,16 @@ fallback_convert_url = base_url + "044, 085, 069"
 fallback_image_url = "https://imgs.search.brave.com/DVK3W6IIFXe4rES3j2MidbbG5Ec6VF29rpYqMhDC4pg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/ZXZlcnlvbmUtc2hh/cmUteW91ci1mYXYt/Y2FzZW9oLWltYWdl/LWlsbC1zdGFydC13/aXRoLW1pbmUtdjAt/MXVtcXB5MGIzbnpm/MS5qcGVnP3dpZHRo/PTcwOSZmb3JtYXQ9/cGpwZyZhdXRvPXdl/YnAmcz04ZjM2Nzhl/YTA2OTI0NjZhYWI3/ZTU3NzczZTI1Yjg3/OWM5MzI3NDdj"
 
 
+async def random():
+    base_url = f"https://random-flat-colors.vercel.app/api/random?count=1"
+
+    async with aiohttp.ClientSession() as session:
+        async with session.get(base_url) as response:
+            response = response.json()
+    object = response["colors"]
+    color = object[0].strip("#")
+    color = int(color, 16)
+    return color
 async def _fetch_bytes(image_url: str) -> bytes:
     async with aiohttp.ClientSession() as session:
         async with session.get(image_url, timeout=aiohttp.ClientTimeout(total=20)) as response:

@@ -1,10 +1,82 @@
 import discord
+import asyncio
+import aiohttp
 
 from discord.ext import bridge, commands
+
+from .functions.color import random
 
 class General(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    @bridge.bridge_command(description="Shows information about the bot.")
+    async def info(self, ctx):
+        tos = "https://sdlsr.dpdns.org/cozyprogression/discord-bot/tos"
+        color = "0x" + await color.random()
+        embed = discord.Embed(
+            tile="Bot Info",
+            description="Discord Bot for the Cozy Progression Modpack",
+            color=color
+        )
+        embed.set_footer(
+            text=f"[TOS]()"
+        )
+
+    @bridge.bridge_command(description="Shows information about the pack")
+    async def pack(self, ctx):
+        base_url="https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/info/information.md"
+
+        try:
+
+            async with aiohttp.ClientSession() as session:
+                async with session.get(base_url) as response:
+                    content = await response.text()
+            embed = discord.Embed(
+                title="Info",
+                description=content,
+                color=0x107AB0
+                )
+            await ctx.respond(embed=embed)
+        except Exception as e:
+            if len(e) > 1024:
+                e = e[:1021] + "..."
+            embed = await error_embed(ctx, e)
+            await ctx.respond(embed=embed)
+
+    @bridge.bridge_command(description="Check latest changelog")
+    async def changelog(self, ctx):
+        await ctx.defer()
+        # latest.md contains a link to the actual changelog file, so this is a double fetch
+        base_url = "https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/info/CHANGELOG/latest.md"
+
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(base_url) as response:
+                    latest = await response.text()
+                    urls = [line.strip() for line in latest.splitlines() if line.strip]
+                    changelog = urls[0]
+                    screenshot = urls[1]
+                async with session.get(changelog) as response:
+                    content = await response.text()
+
+            color = await colorFromImage(screenshot, "hex")
+            colorint = int(color, 16)
+
+            embed = discord.Embed(
+                title="Changelog",
+                description=content,
+                color=colorint
+            )
+            embed.set_image(
+                url=screenshot
+            )
+
+            await ctx.respond(embed=embed)
+
+        except Exception as e:
+            embed = await error_embed(e)
+            await ctx.respond(embed=embed)
 
     @bridge.bridge_command(description="Send related modpack links")
     async def links(self, ctx):
