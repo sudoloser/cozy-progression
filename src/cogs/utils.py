@@ -7,7 +7,7 @@ import asyncio
 
 from .functions import error_handling
 from .functions.error_handling import error_embed
-from .functions.color import colorFromImage
+from .functions.colorFunctions import colorFromImage
 
 from discord.ext import bridge, commands
 

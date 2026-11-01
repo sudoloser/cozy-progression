@@ -4,7 +4,7 @@ import aiohttp
 
 from discord.ext import bridge, commands
 
-from .functions.color import random
+from .functions.colorFunctions import random
 
 class General(commands.Cog):
     def __init__(self, bot):

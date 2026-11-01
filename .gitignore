@@ -8,3 +8,7 @@ pack/pack.mrpack
 src/database.json
 database.json
 website
+src/cogs/functions/__pycache__/color.cpython-314.pyc
+src/cogs/functions/__pycache__/database_helper.cpython-314.pyc
+src/cogs/functions/__pycache__/error_handling.cpython-314.pyc
+src/cogs/functions/__pycache__/lastfm_api.cpython-314.pyc

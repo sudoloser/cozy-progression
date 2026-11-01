@@ -3,7 +3,7 @@ import discord
 from .functions import error_handling
 from .functions.error_handling import error_embed
 
-from .functions.color import colorFromImage
+from .functions.colorFunctions import colorFromImage
 
 from .functions.lastfm_api import lastFmApi, fmapi_get_username, fmapi_set_username
 
