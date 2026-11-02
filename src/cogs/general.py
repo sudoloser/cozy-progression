@@ -79,16 +79,16 @@ class General(commands.Cog):
     @bridge.bridge_command(description="Send related modpack links")
     async def links(self, ctx):
         links = [
-            "- [Modrinth](<https://modrinth.com/modpack/cozyprogression>)",
+            "- [CurseForge](<https://www.curseforge.com/minecraft/modpacks/cozyprogression/>)",
             "[Twitter](<https://x.com/sudoloser>)"
         ]
-        response = "\n- ".join(links)
-        embed = discord.Embed(title="Links", description=f"{response}", color=discord.Color.blue())
+        content = "\n- ".join(links)
+        embed = discord.Embed(title="Links", description=f"{content}", color=discord.Color.blue())
         await ctx.respond(embed=embed)
 
     @bridge.bridge_command(description="Link to download the modpack")
     async def download(self, ctx):
-        embed = discord.Embed(title="Download", description="Search for Cozy Progression directly in your launcher (Prism, CurseForge, GDLauncher), or download the .mrpack manually from [Modrinth](<https://modrinth.com/modpack/cozyprogression>).", color=discord.Color.green())
+        embed = discord.Embed(title="Download", description="Search for Cozy Progression directly in your CurseForge compatible launcher.", color=discord.Color.green())
         await ctx.respond(embed=embed)
 
     @bridge.bridge_command(description="Shows the source code of the bot")
