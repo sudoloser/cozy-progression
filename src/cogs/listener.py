@@ -7,7 +7,7 @@ class Listener(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        # Honeypot channel: any human message here is treated as a compromised account
+        # Honeypot channel: any user message here is treated as a compromised account
         channel_id = 1558806012478226432
         invite_link = "https://discord.gg/VNjED7ucfD"
         guild = message.guild
