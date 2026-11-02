@@ -42,7 +42,7 @@ class dev(commands.Cog):
             await ctx.respond(embed=embed)
     
     @test.command(description="Test extracting primary image from url")
-    async def colorFromImage(self, ctx, image_url: str = "https://fastly.picsum.photos/id/651/536/354.jpg?hmac=uH5tft1mZIFbtwn8QSl34B-BJIAJqENj0Oy6TNodX2c", format: str = "rgb"):
+    async def colorfromimage(self, ctx, image_url: str = "https://fastly.picsum.photos/id/651/536/354.jpg?hmac=uH5tft1mZIFbtwn8QSl34B-BJIAJqENj0Oy6TNodX2c", format: str = "rgb"):
         try:
             await ctx.defer()
             
