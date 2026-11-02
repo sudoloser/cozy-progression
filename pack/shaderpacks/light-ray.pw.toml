@@ -1,13 +1,13 @@
 name = "LIGHT Ray Shaders"
 filename = "LightRay-1.10.0b.zip"
-side = "client"
+side = "both"
 
 [download]
-url = "https://cdn.modrinth.com/data/T9AnY83f/versions/Zjwfqss6/LightRay-1.10.0b.zip"
-hash-format = "sha512"
-hash = "1ca3b17e113cc8b5c095f04d056bf019d98642d13794ddbdb78d6b543822e4b3fc54f6db0f6916b815f1c7bd7f5e72792b1a2c8303a64bdedc390871395611ef"
+hash-format = "sha1"
+hash = "00e3815a702ba54295246faf29b05382e6744ea3"
+mode = "metadata:curseforge"
 
 [update]
-[update.modrinth]
-mod-id = "T9AnY83f"
-version = "Zjwfqss6"
+[update.curseforge]
+file-id = 9221445
+project-id = 1674972

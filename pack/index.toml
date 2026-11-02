@@ -689,6 +689,11 @@ file = "icon.png"
 hash = "21e336d7f2ffe65352902e6546d30fc86e43509aa053ad5d5f0e2dfd8a7de52e"
 
 [[files]]
+file = "light-ray.pw.toml"
+hash = "194bbc2e40f51a9e74c03cb2206a2d9cb3d50a07830d54bd948573e1c143d8b5"
+metafile = true
+
+[[files]]
 file = "mods/3dskinlayers.pw.toml"
 hash = "71527989ac188c9ee212328a75bbfb0c9890950f2adad93447c670008dff4094"
 metafile = true
@@ -915,7 +920,7 @@ metafile = true
 
 [[files]]
 file = "mods/footprintparticle.pw.toml"
-hash = "1408c1028cc8eac37e117b3e686865a6d1ecb5c9915492282b126efee0e50d92"
+hash = "54e4e91777bd4706da0741376b71d42e553792cbcb042f523cd7e8202e278aaa"
 metafile = true
 
 [[files]]
@@ -1231,11 +1236,6 @@ file = "resourcepacks/(Snow) Cozy Progression.zip"
 hash = "14f5fa284b330942646a642f3925c656bb4afc7da7a79dda5d6d75151b1ee90a"
 
 [[files]]
-file = "resourcepacks/better-leaves.pw.toml"
-hash = "c26f8da8b6f013fb7e917e29fc6ae783eb379c539da12d9d61196bc762fd26e1"
-metafile = true
-
-[[files]]
 file = "resourcepacks/motschens-better-leaves.pw.toml"
 hash = "8dfb9c20ca9bb8ef35db6edbfbd5d4a0bebeb6c74d1a4abc62fb64e4508c1f7b"
 metafile = true
@@ -1246,18 +1246,8 @@ hash = "3b754b6b8fb11974da778c0a9dbdba094f03fa4d90aac47ab226546c25e648af"
 metafile = true
 
 [[files]]
-file = "resourcepacks/shaded-font.pw.toml"
-hash = "87be07a0d75ebb3982a6fc6cd56577a62f16f0d5604a4d7e8de50af8f62beeb6"
-metafile = true
-
-[[files]]
 file = "servers.dat"
 hash = "148a9da35e2ce93a30f97036c03fb11c183e45ad0f88b543157d5dae72000dea"
-
-[[files]]
-file = "shaderpacks/light-ray.pw.toml"
-hash = "29fab3779261cdc32807d0a9c4e50aa707f2c1c1baec21c7ae2f6a6061ebb605"
-metafile = true
 
 [[files]]
 file = "shaderpacks/solas-shader.pw.toml"
