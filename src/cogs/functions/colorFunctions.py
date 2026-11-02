@@ -18,7 +18,7 @@ async def random():
             data = await response.json()
     object = data["colors"]
     color = object[0].strip("#")
-    color = int(color, 16)
+    color = int(color)
     return color
 async def _fetch_bytes(image_url: str) -> bytes:
     async with aiohttp.ClientSession() as session:

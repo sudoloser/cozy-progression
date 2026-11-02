@@ -6,7 +6,7 @@ import random
 import asyncio
 
 from .functions.error_handling import error_embed
-from .functions.colorFunctions import colorFromImage
+from .functions import colorFunctions
 
 from .functions.lastfm_api import fmapi_get_username
 from .functions.lastfm_api import fmapi_set_username
@@ -164,7 +164,7 @@ class Utils(commands.Cog):
                 try:
                     artist, trackName, image, nowPlaying = await lastFmApi(username)
                     
-                    color = await colorFromImage(image, "hex")
+                    color = await colorFunctions.colorFromImage(image, "hex")
                     color = int(color, 16)
 
                     embed = discord.Embed(
@@ -220,8 +220,7 @@ class Utils(commands.Cog):
     @random.command(description="Generate a random color")
     async def color(self, ctx):
         await ctx.defer()
-        rcolor = lambda: random.randint(0, 255)
-        color = "%02X%02X%02X" % (rcolor(), rcolor(), rcolor())
+        color = await colorFunctions.random()
         color16 = int(color, 16)
 
         embed = discord.Embed(

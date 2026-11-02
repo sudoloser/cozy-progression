@@ -3,7 +3,7 @@ import discord
 from .functions import error_handling
 from .functions.error_handling import error_embed
 
-from .functions.colorFunctions import colorFromImage
+from .functions import colorFunctions
 
 from .functions.lastfm_api import lastFmApi, fmapi_get_username, fmapi_set_username
 
@@ -42,18 +42,18 @@ class dev(commands.Cog):
             await ctx.respond(embed=embed)
     
     @test.command(description="Test extracting primary image from url")
-    async def colorfromimage(self, ctx, image_url: str = "https://fastly.picsum.photos/id/651/536/354.jpg?hmac=uH5tft1mZIFbtwn8QSl34B-BJIAJqENj0Oy6TNodX2c", format: str = "rgb"):
+    async def colorFromImage(self, ctx, image_url: str = "https://fastly.picsum.photos/id/651/536/354.jpg?hmac=uH5tft1mZIFbtwn8QSl34B-BJIAJqENj0Oy6TNodX2c", format: str = "rgb"):
         try:
             await ctx.defer()
             
             if format == "rgb":
-                color = await colorFromImage(image_url, "rgb")
+                color = await colorFunctions.colorFromImage(image_url, "rgb")
             elif format == "hls":
-                color = await colorFromImage(image_url, "hls")
+                color = await colorFunctions.colorFromImage(image_url, "hls")
             elif format == "hsv":
-                color = await colorFromImage(image_url, "hsv")
+                color = await colorFunctions.colorFromImage(image_url, "hsv")
             elif format == "hex":
-                color = await colorFromImage(image_url, "hex")
+                color = await colorFunctions.colorFromImage(image_url, "hex")
 
             if format == "hex":
                 colorint = int(color, 16)
@@ -104,7 +104,7 @@ class dev(commands.Cog):
                 try:
                     artist, trackName, image, nowPlaying = await lastFmApi(username)
                     
-                    color = await colorFromImage(image, "hex")
+                    color = await colorFunctions.colorFromImage(image, "hex")
                     color = int(color, 16)
 
                     embed = discord.Embed(

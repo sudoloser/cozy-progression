@@ -4,7 +4,7 @@ import aiohttp
 
 from discord.ext import bridge, commands
 
-from .functions.colorFunctions import random
+from .functions import colorFunctions
 
 class General(commands.Cog):
     def __init__(self, bot):
@@ -58,7 +58,7 @@ class General(commands.Cog):
                 async with session.get(changelog) as response:
                     content = await response.text()
 
-            color = await colorFromImage(screenshot, "hex")
+            color = await colorFunctions.colorFromImage(screenshot, "hex")
             colorint = int(color, 16)
 
             embed = discord.Embed(
