@@ -675,7 +675,7 @@ element {
 
 element {
   interactable = true
-  source = [source:web]https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/info/CHANGELOG/v1.0.0.md
+  source = [source:web]https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/info/CHANGELOG/v1.1.1.md
   source_mode = resource
   shadow = true
   enable_scrolling = true
@@ -984,7 +984,7 @@ element {
 
 element {
   interactable = true
-  source = [source:web]https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/info/CHANGELOG/v1.0.0.md
+  source = [source:web]https://raw.githubusercontent.com/sudoloser/cozy-progression/refs/heads/main/info/CHANGELOG/v1.1.1.md
   source_mode = resource
   shadow = true
   enable_scrolling = true
