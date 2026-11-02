@@ -5,9 +5,11 @@ import math
 import random
 import asyncio
 
-from .functions import error_handling
 from .functions.error_handling import error_embed
 from .functions.colorFunctions import colorFromImage
+from .functions.lastfm_api import fmapi_get_username
+from .functions.lastfm_api import fmapi_set_username
+
 
 from discord.ext import bridge, commands
 
