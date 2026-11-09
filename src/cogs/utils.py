@@ -8,6 +8,9 @@ import asyncio
 from .functions.error_handling import error_embed
 from .functions import colorFunctions
 
+from .functions.hash import get_url_hash
+from .functions.discbl import search_hash
+
 from .functions.lastfm_api import fmapi_get_username
 from .functions.lastfm_api import fmapi_set_username
 from .functions.lastfm_api import lastFmApi
@@ -231,6 +234,22 @@ class Utils(commands.Cog):
 
         await ctx.respond(embed=embed)
 
+    @bridge.bridge_command(description="Check the hash of an image URL")
+    async def urlhash(self, ctx, url: str = None):
+        if url == None:
+            embed = error_embed("Please provide an image URL")
+        else:
+            url_hash = await get_url_hash(url)
+
+            embed = discord.Embed(
+                title="Hash From URL",
+                description=url_hash
+            )
+            embed.set_image(
+                url=url
+            )
+        await ctx.respond(embed=embed)
+    
     @bridge.bridge_group()
     async def dice(self, ctx):
         pass

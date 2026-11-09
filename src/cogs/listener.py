@@ -1,3 +1,9 @@
+import re
+import hashlib
+
+from .functions.hash import get_url_hash
+from .functions.discbl import search_hash
+
 import discord
 from discord.ext import bridge, commands
 
@@ -13,6 +19,10 @@ class Listener(commands.Cog):
         guild = message.guild
         user = message.author
         
+        # DiscBL
+        supported_extensions = ('.gif', '.png')
+        url_pattern = r'https?://[^\s>]+'
+
         if message.channel.id == channel_id:
             if user == self.bot.user:
                 return
@@ -46,6 +56,20 @@ class Listener(commands.Cog):
                     await user.kick(reason="Honey pot")
                 except Exception as e:
                     print(e)
+        if message.content:
+            found_urls = re.findall(url_pattern, message.content)
 
+            for url in found_urls:
+                clean_url = url.rstrip('.,;!?')
+
+                if clean_url.lower().endswith(supported_extensions):
+                    print(f"Found media URL in text: {clean_url}")
+
+                    file_hash = await get_url_hash(clean_url)
+
+                    found = await search_hash(file_hash)
+
+                    if found == True:
+                        await message.delete()
 def setup(bot):
     bot.add_cog(Listener(bot))

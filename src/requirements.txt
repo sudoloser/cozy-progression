@@ -4,3 +4,5 @@ audioop-lts
 pillow
 aiohttp
 pysondb
+re
+hashlib
