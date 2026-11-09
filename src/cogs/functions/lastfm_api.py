@@ -37,12 +37,12 @@ def fmapi_set_username(user_id, username, discord_username=""):
 
 
 async def lastFmApi(username: str = None, command: str = None):
+    apiKey = os.getenv("LASTFM_API_KEY")
+    apiUrl = f"https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user={username}&api_key={apiKey}&format=json&limit=1"
     if not username:
         raise ValueError("Please provide a username when calling this function.")
-    apiKey = os.getenv("LASTFM_API_KEY")
     if not apiKey:
         raise ValueError("LASTFM_API_KEY is missing. Add it to .env and restart the bot.")
-    apiUrl = f"https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user={username}&api_key={apiKey}&format=json&limit=1"
     if not command:
         async with aiohttp.ClientSession() as session:
             async with session.get(apiUrl) as response:
